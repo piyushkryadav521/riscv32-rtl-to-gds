@@ -24,7 +24,7 @@ module instruction_decoder_tb;
 
         $dumpfile("sim/instruction_decoder.vcd");
         $dumpvars(0, instruction_decoder_tb);
-        instruction = 32'b0100000_01010_01001_000_01000_0110011;
+        instruction = 32'b0000000_00111_00110_000_00101_0110011;
 
         #10;
         

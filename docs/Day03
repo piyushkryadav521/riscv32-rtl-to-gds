@@ -1,0 +1,663 @@
+# Day 3 — Instruction Execution Flow
+
+## 1. Objective
+
+The objective of Day 3 was to understand what happens inside a processor when an instruction is executed.
+
+The main execution flow studied was:
+
+```text
+PC
+ ↓
+Instruction Memory
+ ↓
+Instruction Decoder
+ ↓
+Register File
+ ↓
+ALU
+ ↓
+Data Memory / Write Back
+ ↓
+Next PC
+```
+
+The practical work focused on understanding and verifying the path:
+
+```text
+Instruction
+    ↓
+Instruction Decoder
+    ↓
+Register File
+    ↓
+ALU
+    ↓
+Result
+```
+
+---
+
+## 2. What Happens When an Instruction Executes?
+
+A RISC-V processor performs several logical stages to execute an instruction.
+
+### Step 1 — Instruction Fetch
+
+The Program Counter (PC) contains the address of the instruction.
+
+The instruction memory uses this address to provide the 32-bit instruction.
+
+For normal RV32I instructions:
+
+```text
+Next PC = PC + 4
+```
+
+because each standard RISC-V instruction is 32 bits = 4 bytes.
+
+---
+
+### Step 2 — Instruction Decode
+
+The instruction decoder extracts important fields from the 32-bit instruction:
+
+```text
+opcode
+rd
+rs1
+rs2
+funct3
+funct7
+```
+
+For example:
+
+```text
+ADD x5, x6, x7
+```
+
+is encoded as:
+
+```text
+0000000 00111 00110 000 00101 0110011
+```
+
+The decoder extracts:
+
+```text
+opcode = 0110011
+rd     = 5
+rs1    = 6
+rs2    = 7
+funct3 = 000
+funct7 = 0000000
+```
+
+This tells the processor that the instruction is an R-type ADD instruction using registers x6 and x7 and writing the result to x5.
+
+---
+
+## 3. Register File
+
+The Register File contains 32 general-purpose registers:
+
+```text
+x0, x1, x2, ... x31
+```
+
+Each register is 32 bits wide in RV32.
+
+Two registers can be read simultaneously:
+
+```text
+rs1 → read_data1
+rs2 → read_data2
+```
+
+and one register can be written:
+
+```text
+rd ← write_data
+```
+
+### Important RISC-V rule
+
+Register `x0` is permanently zero.
+
+Therefore:
+
+```text
+x0 = 0
+```
+
+Writing to x0 must have no effect.
+
+---
+
+## 4. ALU
+
+The Arithmetic Logic Unit (ALU) performs arithmetic and logical operations.
+
+The ALU implemented in this project supports:
+
+| Operation | Control |
+| --------- | ------- |
+| ADD       | `0000`  |
+| SUB       | `0001`  |
+| AND       | `0010`  |
+| OR        | `0011`  |
+| XOR       | `0100`  |
+| SLT       | `0101`  |
+
+For example:
+
+```text
+a = 25
+b = 15
+operation = ADD
+```
+
+The ALU produces:
+
+```text
+result = 25 + 15
+       = 40
+```
+
+The ALU also generates a `zero` signal:
+
+```text
+zero = 1
+```
+
+when:
+
+```text
+result == 0
+```
+
+Otherwise:
+
+```text
+zero = 0
+```
+
+---
+
+## 5. Example: ADD Instruction
+
+Consider:
+
+```text
+ADD x5, x6, x7
+```
+
+Assume:
+
+```text
+x6 = 25
+x7 = 15
+```
+
+The execution flow is:
+
+```text
+ADD x5, x6, x7
+        │
+        ▼
+Instruction Decoder
+        │
+        ├── rs1 = x6
+        ├── rs2 = x7
+        └── rd  = x5
+        │
+        ▼
+Register File
+        │
+        ├── read x6 = 25
+        └── read x7 = 15
+        │
+        ▼
+       ALU
+        │
+        │ 25 + 15
+        ▼
+      Result = 40
+        │
+        ▼
+   Write to x5
+```
+
+Therefore:
+
+```text
+x5 = 40
+```
+
+---
+
+## 6. Example: ADDI Instruction
+
+Consider:
+
+```text
+ADDI x5, x6, 10
+```
+
+This instruction is different from ADD because the second ALU operand is not another register.
+
+The execution flow is:
+
+```text
+ADDI x5, x6, 10
+        │
+        ▼
+Instruction Decoder
+        │
+        ├── rs1 = x6
+        └── rd  = x5
+        │
+        ├───────────────┐
+        ▼               ▼
+ Register File   Immediate Generator
+        │               │
+      x6 value          10
+        │               │
+        └───────┬───────┘
+                ▼
+               ALU
+                │
+                ▼
+             x6 + 10
+                │
+                ▼
+               x5
+```
+
+This is why the processor needs an **Immediate Generator**.
+
+The immediate value is encoded inside the instruction and must be extracted and converted into a proper 32-bit value before being used by the ALU.
+
+---
+
+## 7. Why Do We Need an Immediate Generator?
+
+Different RISC-V instruction formats store immediate values in different locations.
+
+Examples:
+
+### I-Type
+
+```text
+instruction[31:20]
+```
+
+### S-Type
+
+```text
+instruction[31:25] + instruction[11:7]
+```
+
+### B-Type
+
+The branch immediate is distributed across several instruction bits.
+
+### U-Type
+
+```text
+instruction[31:12]
+```
+
+### J-Type
+
+The jump immediate is also distributed across several instruction fields.
+
+The Immediate Generator reconstructs these values and produces a 32-bit immediate for the processor.
+
+For signed immediates, sign extension is required.
+
+For example:
+
+```text
+12-bit immediate = 000000000101
+```
+
+becomes:
+
+```text
+32-bit immediate = 00000000000000000000000000000101
+```
+
+For `-5`:
+
+```text
+12-bit = 111111111011
+```
+
+sign extension produces:
+
+```text
+11111111111111111111111111111011
+```
+
+---
+
+# 8. RTL Modules Implemented
+
+During this stage, the following RTL modules were created/verified:
+
+```text
+rtl/
+├── instruction_decoder.v
+├── register_file.v
+└── alu.v
+```
+
+---
+
+## 9. Instruction Decoder
+
+File:
+
+```text
+rtl/instruction_decoder.v
+```
+
+Purpose:
+
+Extract the fields of a 32-bit RISC-V instruction.
+
+Outputs:
+
+```text
+opcode
+rd
+funct3
+rs1
+rs2
+funct7
+```
+
+The decoder was verified using a dedicated testbench.
+
+Testbench:
+
+```text
+tb/instruction_decoder_tb.v
+```
+
+---
+
+## 10. Register File
+
+File:
+
+```text
+rtl/register_file.v
+```
+
+Purpose:
+
+* Store 32 registers.
+* Read two registers simultaneously.
+* Write one register.
+* Keep x0 permanently zero.
+* Support reset.
+
+Testbench:
+
+```text
+tb/register_file_tb.v
+```
+
+The Register File was tested with:
+
+```text
+x6 = 25
+x7 = 15
+x0 = 0
+```
+
+Simulation result:
+
+```text
+===== REGISTER FILE TEST =====
+x6 = 25
+x7 = 15
+x0 = 0
+```
+
+The result confirms that register read/write functionality works correctly.
+
+---
+
+## 11. ALU
+
+File:
+
+```text
+rtl/alu.v
+```
+
+Purpose:
+
+Perform arithmetic and logical operations.
+
+Supported operations:
+
+```text
+ADD
+SUB
+AND
+OR
+XOR
+SLT
+```
+
+Testbench:
+
+```text
+tb/alu_tb.v
+```
+
+The ALU was tested with arithmetic and logical operations.
+
+For the main execution-flow example:
+
+```text
+25 + 15 = 40
+```
+
+The ALU produced the expected result.
+
+---
+
+# 12. Simulation and Verification
+
+### Instruction Decoder
+
+Compilation:
+
+```bash
+iverilog -g2012 -o sim/instruction_decoder_tb_sim rtl/instruction_decoder.v tb/instruction_decoder_tb.v
+```
+
+Simulation:
+
+```bash
+vvp sim/instruction_decoder_tb_sim
+```
+
+VCD:
+
+```text
+sim/instruction_decoder.vcd
+```
+
+GTKWave verification was completed successfully.
+
+---
+
+### Register File
+
+Compilation:
+
+```bash
+iverilog -g2012 -o sim/register_file_sim rtl/register_file.v tb/register_file_tb.v
+```
+
+Simulation:
+
+```bash
+vvp sim/register_file_sim
+```
+
+VCD:
+
+```text
+sim/register_file.vcd
+```
+
+GTKWave verification was completed successfully.
+
+---
+
+### ALU
+
+Compilation:
+
+```bash
+iverilog -g2012 -o sim/alu_tb_sim rtl/alu.v tb/alu_tb.v
+```
+
+Simulation:
+
+```bash
+vvp sim/alu_tb_sim
+```
+
+VCD:
+
+```text
+sim/alu.vcd
+```
+
+GTKWave verification was completed successfully.
+
+---
+
+# 13. Execution Flow Learned
+
+The main processor execution flow learned during Day 3 is:
+
+```text
+              ┌──────────────┐
+              │      PC      │
+              └──────┬───────┘
+                     │
+                     ▼
+              ┌──────────────┐
+              │ Instruction  │
+              │    Memory    │
+              └──────┬───────┘
+                     │
+                     ▼
+              ┌──────────────┐
+              │ Instruction  │
+              │   Decoder    │
+              └──────┬───────┘
+                     │
+              ┌──────┴──────┐
+              ▼             ▼
+       ┌────────────┐  ┌──────────────┐
+       │ Register   │  │  Immediate   │
+       │   File     │  │  Generator   │
+       └─────┬──────┘  └──────┬───────┘
+             │                │
+             └───────┬────────┘
+                     ▼
+                ┌─────────┐
+                │   ALU   │
+                └────┬────┘
+                     │
+                     ▼
+                  Result
+                     │
+             ┌───────┴───────┐
+             ▼               ▼
+       Data Memory        Write Back
+```
+
+This architecture forms the foundation for the complete RV32I processor.
+
+---
+
+# 14. Files Created During Day 3
+
+```text
+rtl/
+├── alu.v
+├── instruction_decoder.v
+└── register_file.v
+
+tb/
+├── alu_tb.v
+├── instruction_decoder_tb.v
+└── register_file_tb.v
+
+sim/
+├── alu.vcd
+├── instruction_decoder.vcd
+└── register_file.vcd
+
+docs/
+└── Day03.md
+```
+
+Generated simulation executables are kept out of GitHub using `.gitignore`.
+
+---
+
+# 15. Key Learnings
+
+By the end of Day 3, I learned:
+
+1. How a processor executes an instruction.
+2. The purpose of the Program Counter.
+3. Why the PC normally increments by 4 in RV32I.
+4. How an instruction is decoded.
+5. How `rs1`, `rs2`, and `rd` select registers.
+6. How the Register File reads and writes data.
+7. Why RISC-V register x0 is always zero.
+8. How the ALU performs arithmetic and logical operations.
+9. Why an Immediate Generator is required.
+10. How the different RISC-V instruction formats encode immediate values.
+11. How RTL modules are verified using testbenches.
+12. How VCD files are generated and inspected using GTKWave.
+
+---
+
+# 16. Day 3 Conclusion
+
+Day 3 established the basic execution path of the RV32I processor.
+
+The Instruction Decoder, Register File, and ALU were implemented and verified independently.
+
+The basic execution concept can now be represented as:
+
+```text
+Instruction
+     ↓
+Decode
+     ↓
+Read Registers
+     ↓
+Execute
+     ↓
+Result
+```
+
+These modules will later be integrated with the Immediate Generator, Control Unit, Data Memory, Branch Unit, Program Counter, and other components to build the complete single-cycle RV32I processor.
+
+**Day 3 Status: COMPLETE**
