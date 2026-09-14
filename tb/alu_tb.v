@@ -67,6 +67,27 @@ module alu_tb;
 
         $display("XOR: %h", result);
 
+                // SLT: 10 < 20
+        a = 32'd10;
+        b = 32'd20;
+        alu_control = 4'b0101;
+
+        #10;
+
+        $display("SLT: %d < %d = %d", a, b, result);
+
+        // Zero flag test: 25 - 25 = 0
+        a = 32'd25;
+        b = 32'd25;
+        alu_control = 4'b0001;
+
+        #10;
+
+        $display("SUB Zero Test: %d - %d = %d, Zero = %b",
+                 a, b, result, zero);
+
+        
+
         $finish;
 
     end
