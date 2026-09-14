@@ -46,7 +46,7 @@ module immediate_generator_tb;
 
         $display("BEQ Immediate  = %d", $signed(immediate));
 
-        // -----------------------------------------
+               // -----------------------------------------
         // Test 4: ADDI x5, x6, -5
         // Tests sign extension
         // -----------------------------------------
@@ -55,6 +55,27 @@ module immediate_generator_tb;
         #10;
 
         $display("ADDI -5 Imm.   = %d", $signed(immediate));
+
+        // -----------------------------------------
+        // Test 5: LUI x5, 0x12345
+        // U-Type immediate
+        // Expected immediate = 0x12345000
+        // -----------------------------------------
+        instruction = 32'b00010010001101000101_00101_0110111;
+
+        #10;
+
+        $display("LUI Immediate   = %h", immediate);
+
+        // -----------------------------------------
+        // Test 6: JAL x1, 8
+        // J-Type immediate
+        // Expected immediate = 8
+        // -----------------------------------------
+        instruction = 32'b00000000100000000000000011101111;
+        #10;
+
+        $display("JAL Immediate   = %d", $signed(immediate));
 
         $finish;
 
