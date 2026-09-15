@@ -8,25 +8,20 @@ module instruction_memory (
     reg [31:0] memory [0:255];
 
     // Instruction memory initialization
+
     initial begin
 
-        // ADD x5, x6, x7
-        memory[0] = 32'b0000000_00111_00110_000_00101_0110011;
+        // LUI x5, 0x12345
+        // Expected x5 = 0x12345000
+        memory[0] = 32'h123452B7;
 
-        // SUB x8, x9, x10
-        memory[1] = 32'b0100000_01010_01001_000_01000_0110011;
+        // AUIPC x6, 0x00001
+        // PC = 4
+        // Expected x6 = 0x00001004
+        memory[1] = 32'h00001317;
 
-        // AND x11, x12, x13
-        memory[2] = 32'b0000000_01101_01100_111_01011_0110011;
-
-        // OR x14, x15, x16
-        memory[3] = 32'b0000000_10000_01111_110_01110_0110011;
-
-        // ADDI x17, x18, 10
-        memory[4] = 32'b000000001010_10010_000_10001_0010011;
-
-        // Default remaining memory locations to NOP
-        memory[5] = 32'h00000013;
+        // NOP
+        memory[2] = 32'h00000013;
 
     end
 
