@@ -1,0 +1,61 @@
+$date
+	Tue Sep 15 17:37:15 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module branch_unit_tb $end
+$var wire 1 ! branch_taken $end
+$var reg 1 " branch $end
+$var reg 3 # funct3 [2:0] $end
+$var reg 32 $ rs1_data [31:0] $end
+$var reg 32 % rs2_data [31:0] $end
+$scope module uut $end
+$var wire 1 " branch $end
+$var wire 3 & funct3 [2:0] $end
+$var wire 32 ' rs1_data [31:0] $end
+$var wire 32 ( rs2_data [31:0] $end
+$var reg 1 ! branch_taken $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+b11001 (
+b11001 '
+b0 &
+b11001 %
+b11001 $
+b0 #
+1"
+1!
+$end
+#10000
+0!
+b1111 %
+b1111 (
+#20000
+1!
+b1 #
+b1 &
+#30000
+0!
+b11001 %
+b11001 (
+#40000
+0"
+b0 #
+b0 &
+#50000
+1"
+b10 #
+b10 &
+b1111 %
+b1111 (
+#60000
