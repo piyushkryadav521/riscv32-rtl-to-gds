@@ -1,3 +1,5 @@
 sim/*_sim
 sim/*.gtkw
 sim/*.vcd
+
+backup/

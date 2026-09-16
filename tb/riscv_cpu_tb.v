@@ -8,10 +8,6 @@ module riscv_cpu_tb;
     wire [31:0] pc;
     wire [31:0] instruction;
 
-    // ============================================
-    // DUT
-    // ============================================
-
     riscv_cpu dut (
         .clk         (clk),
         .reset       (reset),
@@ -19,79 +15,72 @@ module riscv_cpu_tb;
         .instruction (instruction)
     );
 
-    // ============================================
-    // Clock Generation
-    // ============================================
-
     always #5 clk = ~clk;
 
-    // ============================================
-    // Waveform Dump
-    // ============================================
-
     initial begin
-        $dumpfile("sim/riscv_cpu.vcd");
+        $dumpfile("sim/riscv_cpu_day18.vcd");
         $dumpvars(0, riscv_cpu_tb);
     end
-
-    // ============================================
-    // Test
-    // ============================================
 
     initial begin
 
         clk   = 1'b0;
         reset = 1'b1;
 
-        // Keep reset active
+        // Hold reset
         #12;
-
-        // Release reset
         reset = 1'b0;
 
-        // ========================================
-        // Allow CPU to execute
-        // ========================================
+        // Initialize source registers for Day 18 tests
+        dut.registers.registers[6]  = 32'd25;
+        dut.registers.registers[7]  = 32'd15;
 
-        #60;
+        dut.registers.registers[9]  = 32'd25;
+        dut.registers.registers[10] = 32'd15;
 
-        // ========================================
-        // Branch Verification
-        // ========================================
+        dut.registers.registers[12] = 32'd15;
+        dut.registers.registers[13] = 32'd7;
 
+        dut.registers.registers[15] = 32'd15;
+        dut.registers.registers[16] = 32'd5;
+
+        dut.registers.registers[18] = 32'd12;
+        dut.registers.registers[19] = 32'd10;
+
+        dut.registers.registers[21] = 32'd5;
+        dut.registers.registers[22] = 32'd10;
+
+        // Run CPU
+        #100;
+
+        $display("");
         $display("========================================");
-        $display("BRANCH CPU VERIFICATION");
-        $display("========================================");
+        $display("REGISTER + ALU VERIFICATION");
 
-        $display("x5 = %0d", dut.registers.registers[5]);
-        $display("x6 = %0d", dut.registers.registers[6]);
-        $display("x7 = %0d", dut.registers.registers[7]);
+        $display("x5  = %0d  (Expected 40)", dut.registers.registers[5]);
+        $display("x8  = %0d  (Expected 10)", dut.registers.registers[8]);
+        $display("x11 = %0d  (Expected 7)", dut.registers.registers[11]);
+        $display("x14 = %0d  (Expected 15)", dut.registers.registers[14]);
+        $display("x17 = %0d  (Expected 6)", dut.registers.registers[17]);
+        $display("x20 = %0d  (Expected 1)", dut.registers.registers[20]);
+        $display("x23 = %0d  (Expected 50)", dut.registers.registers[23]);
+        $display("x24 = %0d  (Expected 2)", dut.registers.registers[24]);
+        $display("x25 = %0d  (Expected 10)", dut.registers.registers[25]);
 
-        $display("========================================");
+        $display("VERIFICATION COMPLETE");
 
         $finish;
 
     end
 
-    // ============================================
-    // CPU Monitor
-    // ============================================
-
     always @(posedge clk) begin
 
         $display("Time=%0t PC=%h Instruction=%h ALU=%h WB=%h",
-             $time,
-             pc,
-             instruction,
-             dut.alu_result,
-             dut.write_back_data);
-
-        $display("        Immediate=%h Branch=%b BranchTaken=%b BranchTarget=%h NextPC=%h",
-             dut.immediate,
-             dut.branch,
-             dut.branch_taken,
-             dut.branch_target,
-             dut.next_pc);
+                 $time,
+                 pc,
+                 instruction,
+                 dut.alu_result,
+                 dut.write_back_data);
 
     end
 
