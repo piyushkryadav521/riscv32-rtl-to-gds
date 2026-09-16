@@ -9,56 +9,47 @@ module instruction_memory (
 
     initial begin
 
-        // ADDI x5, x0, 25
-        // x5 = 25
-      memory[0] = 32'h01900293;
+        // ==========================================
+        // MEMORY INTEGRATION TEST
+        
+        // ADDI x5, x0, 100
+        // x5 = 100
+        memory[0] = 32'h06400293;
 
-       // ADDI x6, x0, 15
-      // x6 = 15
-      memory[1] = 32'h00F00313;
+        // ADDI x6, x0, 200
+        // x6 = 200
+        memory[1] = 32'h0C800313;
 
-      // ANDI x7, x5, 15
-      // x7 = 25 & 15 = 9
-      memory[2] = 32'h00F2F393;
+        // SW x5, 0(x0)
+        // memory[0] = 100
+        memory[2] = 32'h00502023;
 
-      // ORI x8, x6, 16
-      // x8 = 15 | 16 = 31
-      memory[3] = 32'h01036413;
+        // SW x6, 4(x0)
+        // memory[1] = 200
+        memory[3] = 32'h00602223;
 
-      // SW x8, 0(x0)
-      // memory[0] = 31
-      memory[4] = 32'h00802023;
+        // LW x7, 0(x0)
+        // x7 = 100
+        memory[4] = 32'h00002383;
 
-      // LW x9, 0(x0)
-      // x9 = 31
-      memory[5] = 32'h00002483;
+        // LW x8, 4(x0)
+        // x8 = 200
+        memory[5] = 32'h00402403;
 
-      // BEQ x9, x8, +8
-      // Branch to instruction at PC = 28
-      memory[6] = 32'h00848463;
+        // ADD x9, x7, x8
+        // x9 = 100 + 200 = 300
+        memory[6] = 32'h008384B3;
 
-      // This instruction should be skipped
-      // ADDI x10, x0, 99
-      memory[7] = 32'h06300513;
+        // SW x9, 8(x0)
+        // memory[2] = 300
+        memory[7] = 32'h00902423;
 
-      // Target
-      // ADDI x10, x0, 77
-      memory[8] = 32'h04D00513;
+        // LW x10, 8(x0)
+        // x10 = 300
+        memory[8] = 32'h00802503;
 
-      // BNE x5, x6, +8
-      // 25 != 15 → branch taken
-      memory[9] = 32'h00629463;
-
-      // This instruction should be skipped
-      // ADDI x11, x0, 88
-      memory[10] = 32'h05800593;
-
-      // Target
-      // ADDI x11, x0, 66
-      memory[11] = 32'h04200593;
-
-      // NOP
-      memory[12] = 32'h00000013;
+        // NOP
+        memory[9] = 32'h00000013;
 
     end
 
