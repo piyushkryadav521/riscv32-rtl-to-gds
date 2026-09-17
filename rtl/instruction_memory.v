@@ -9,47 +9,53 @@ module instruction_memory (
 
     initial begin
 
-        // ==========================================
-        // MEMORY INTEGRATION TEST
         
-        // ADDI x5, x0, 100
-        // x5 = 100
-        memory[0] = 32'h06400293;
+        // BRANCH AND JUMP TEST
 
-        // ADDI x6, x0, 200
-        // x6 = 200
-        memory[1] = 32'h0C800313;
+        // ADDI x5, x0, 10
+        // x5 = 10
+        memory[0] = 32'h00A00293;
 
-        // SW x5, 0(x0)
-        // memory[0] = 100
-        memory[2] = 32'h00502023;
+        // ADDI x6, x0, 10
+        // x6 = 10
+        memory[1] = 32'h00A00313;
 
-        // SW x6, 4(x0)
-        // memory[1] = 200
-        memory[3] = 32'h00602223;
+        // BEQ x5, x6, +8
+        // 10 == 10 → branch taken
+        // Skip instruction at PC=12
+        memory[2] = 32'h00628463;
 
-        // LW x7, 0(x0)
-        // x7 = 100
-        memory[4] = 32'h00002383;
+        // ADDI x7, x0, 99
+        // Should be skipped
+        memory[3] = 32'h06300393;
 
-        // LW x8, 4(x0)
-        // x8 = 200
-        memory[5] = 32'h00402403;
+        // ADDI x7, x0, 77
+        // Branch target
+        memory[4] = 32'h04D00393;
 
-        // ADD x9, x7, x8
-        // x9 = 100 + 200 = 300
-        memory[6] = 32'h008384B3;
+        // BNE x5, x6, +8
+        // 10 != 10 is false → branch NOT taken
+        memory[5] = 32'h00629463;
 
-        // SW x9, 8(x0)
-        // memory[2] = 300
-        memory[7] = 32'h00902423;
+        // ADDI x8, x0, 55
+        // Should execute
+        memory[6] = 32'h03700413;
 
-        // LW x10, 8(x0)
-        // x10 = 300
-        memory[8] = 32'h00802503;
+        // JAL x9, +8
+        // x9 = PC + 4
+        // Jump to PC + 8
+        memory[7] = 32'h008004EF;
+
+        // ADDI x10, x0, 99
+        // Should be skipped
+        memory[8] = 32'h06300513;
+
+        // ADDI x10, x0, 88
+        // JAL target
+        memory[9] = 32'h05800513;
 
         // NOP
-        memory[9] = 32'h00000013;
+        memory[10] = 32'h00000013;
 
     end
 
