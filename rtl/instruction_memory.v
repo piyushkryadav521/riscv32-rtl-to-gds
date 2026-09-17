@@ -9,53 +9,68 @@ module instruction_memory (
 
     initial begin
 
-        
-        // BRANCH AND JUMP TEST
+        // ==========================================
+        //  COMPLETE RV32I PROGRAM
+    
 
-        // ADDI x5, x0, 10
-        // x5 = 10
-        memory[0] = 32'h00A00293;
+        // 1. ADDI x5, x0, 10
+       // x5 = 10
+       memory[0] = 32'h00A00293;
 
-        // ADDI x6, x0, 10
-        // x6 = 10
-        memory[1] = 32'h00A00313;
+       // 2. ADDI x6, x0, 20
+      // x6 = 20
+      memory[1] = 32'h01400313;
 
-        // BEQ x5, x6, +8
-        // 10 == 10 → branch taken
-        // Skip instruction at PC=12
-        memory[2] = 32'h00628463;
+       // 3. ADD x7, x5, x6
+      // x7 = 10 + 20 = 30
+      memory[2] = 32'h006283B3;
 
-        // ADDI x7, x0, 99
-        // Should be skipped
-        memory[3] = 32'h06300393;
+       // 4. SUB x8, x7, x5
+      // x8 = 30 - 10 = 20
+      memory[3] = 32'h40538433;
 
-        // ADDI x7, x0, 77
-        // Branch target
-        memory[4] = 32'h04D00393;
+      // 5. AND x9, x7, x6
+      // x9 = 30 & 20 = 20
+      memory[4] = 32'h0063F4B3;
 
-        // BNE x5, x6, +8
-        // 10 != 10 is false → branch NOT taken
-        memory[5] = 32'h00629463;
+       // 6. OR x10, x5, x6
+       // x10 = 10 | 20 = 30
+       memory[5] = 32'h0062E533;
 
-        // ADDI x8, x0, 55
-        // Should execute
-        memory[6] = 32'h03700413;
+       // 7. SW x7, 0(x0)
+      // Memory[0] = 30
+     memory[6] = 32'h00702023;
 
-        // JAL x9, +8
-        // x9 = PC + 4
-        // Jump to PC + 8
-        memory[7] = 32'h008004EF;
+      // 8. LW x11, 0(x0)
+      // x11 = Memory[0] = 30
+      memory[7] = 32'h00002583;
 
-        // ADDI x10, x0, 99
-        // Should be skipped
-        memory[8] = 32'h06300513;
+      // 9. BEQ x11, x7, +8
+      // Branch taken → skip next instruction
+      memory[8] = 32'h00758463;
 
-        // ADDI x10, x0, 88
-        // JAL target
-        memory[9] = 32'h05800513;
+      // 10. ADDI x12, x0, 99
+      // Should be skipped
+      memory[9] = 32'h06300613;
 
-        // NOP
-        memory[10] = 32'h00000013;
+      // 11. ADDI x12, x0, 55
+      // x12 = 55
+      memory[10] = 32'h03700613;
+
+      // 12. JAL x13, +8
+      // x13 = PC + 4
+      memory[11] = 32'h008006EF;
+
+      // 13. ADDI x14, x0, 99
+      // Should be skipped
+      memory[12] = 32'h06300713;
+
+      // 14. ADDI x14, x0, 88
+      // x14 = 88
+      memory[13] = 32'h05800713;
+
+      // 15. NOP
+      memory[14] = 32'h00000013;
 
     end
 
