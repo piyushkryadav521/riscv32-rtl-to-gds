@@ -10,46 +10,48 @@ module instruction_memory (
     initial begin
 
         // ==========================================
-        // DAY 26 — R-TYPE INSTRUCTION VERIFICATION
+        // — I-TYPE & MEMORY VERIFICATION
         // ==========================================
 
         // ADDI x5, x0, 25
+        // x5 = 25
         memory[0] = 32'h01900293;
 
         // ADDI x6, x0, 15
+        // x6 = 15
         memory[1] = 32'h00F00313;
 
-        // ADD x7, x5, x6
-        // x7 = 25 + 15 = 40
-        memory[2] = 32'h006283B3;
+        // ANDI x7, x5, 15
+        // x7 = 25 & 15 = 9
+        memory[2] = 32'h00F2F393;
 
-        // SUB x8, x5, x6
-        // x8 = 25 - 15 = 10
-        memory[3] = 32'h40628433;
+        // ORI x8, x6, 16
+        // x8 = 15 | 16 = 31
+        memory[3] = 32'h01036413;
 
-        // AND x9, x5, x6
-        // x9 = 25 & 15 = 9
-        memory[4] = 32'h0062F4B3;
+        // SW x8, 0(x0)
+        // Memory[0] = 31
+        memory[4] = 32'h00802023;
 
-        // OR x10, x5, x6
-        // x10 = 25 | 15 = 31
-        memory[5] = 32'h0062E533;
+        // LW x9, 0(x0)
+        // x9 = Memory[0] = 31
+        memory[5] = 32'h00002483;
 
-        // XOR x11, x5, x6
-        // x11 = 25 ^ 15 = 22
-        memory[6] = 32'h0062C5B3;
+        // ADDI x10, x9, 5
+        // x10 = 31 + 5 = 36
+        memory[6] = 32'h00548513;
 
-        // SLT x12, x6, x5
-        // x12 = (15 < 25) = 1
-        memory[7] = 32'h00532633;
+        // SW x10, 4(x0)
+        // Memory[1] = 36
+        memory[7] = 32'h00A02223;
 
-        // ADD x13, x7, x8
-        // x13 = 40 + 10 = 50
-        memory[8] = 32'h008386B3;
+        // LW x11, 4(x0)
+        // x11 = Memory[1] = 36
+        memory[8] = 32'h00402583;
 
-        // SUB x14, x13, x7
-        // x14 = 50 - 40 = 10
-        memory[9] = 32'h40768733;
+        // ADD x12, x9, x11
+        // x12 = 31 + 36 = 67
+        memory[9] = 32'h00B48633;
 
         // NOP
         memory[10] = 32'h00000013;
