@@ -10,67 +10,49 @@ module instruction_memory (
     initial begin
 
         // ==========================================
-        //  COMPLETE RV32I PROGRAM
-    
+        // DAY 26 — R-TYPE INSTRUCTION VERIFICATION
+        // ==========================================
 
-        // 1. ADDI x5, x0, 10
-       // x5 = 10
-       memory[0] = 32'h00A00293;
+        // ADDI x5, x0, 25
+        memory[0] = 32'h01900293;
 
-       // 2. ADDI x6, x0, 20
-      // x6 = 20
-      memory[1] = 32'h01400313;
+        // ADDI x6, x0, 15
+        memory[1] = 32'h00F00313;
 
-       // 3. ADD x7, x5, x6
-      // x7 = 10 + 20 = 30
-      memory[2] = 32'h006283B3;
+        // ADD x7, x5, x6
+        // x7 = 25 + 15 = 40
+        memory[2] = 32'h006283B3;
 
-       // 4. SUB x8, x7, x5
-      // x8 = 30 - 10 = 20
-      memory[3] = 32'h40538433;
+        // SUB x8, x5, x6
+        // x8 = 25 - 15 = 10
+        memory[3] = 32'h40628433;
 
-      // 5. AND x9, x7, x6
-      // x9 = 30 & 20 = 20
-      memory[4] = 32'h0063F4B3;
+        // AND x9, x5, x6
+        // x9 = 25 & 15 = 9
+        memory[4] = 32'h0062F4B3;
 
-       // 6. OR x10, x5, x6
-       // x10 = 10 | 20 = 30
-       memory[5] = 32'h0062E533;
+        // OR x10, x5, x6
+        // x10 = 25 | 15 = 31
+        memory[5] = 32'h0062E533;
 
-       // 7. SW x7, 0(x0)
-      // Memory[0] = 30
-     memory[6] = 32'h00702023;
+        // XOR x11, x5, x6
+        // x11 = 25 ^ 15 = 22
+        memory[6] = 32'h0062C5B3;
 
-      // 8. LW x11, 0(x0)
-      // x11 = Memory[0] = 30
-      memory[7] = 32'h00002583;
+        // SLT x12, x6, x5
+        // x12 = (15 < 25) = 1
+        memory[7] = 32'h00532633;
 
-      // 9. BEQ x11, x7, +8
-      // Branch taken → skip next instruction
-      memory[8] = 32'h00758463;
+        // ADD x13, x7, x8
+        // x13 = 40 + 10 = 50
+        memory[8] = 32'h008386B3;
 
-      // 10. ADDI x12, x0, 99
-      // Should be skipped
-      memory[9] = 32'h06300613;
+        // SUB x14, x13, x7
+        // x14 = 50 - 40 = 10
+        memory[9] = 32'h40768733;
 
-      // 11. ADDI x12, x0, 55
-      // x12 = 55
-      memory[10] = 32'h03700613;
-
-      // 12. JAL x13, +8
-      // x13 = PC + 4
-      memory[11] = 32'h008006EF;
-
-      // 13. ADDI x14, x0, 99
-      // Should be skipped
-      memory[12] = 32'h06300713;
-
-      // 14. ADDI x14, x0, 88
-      // x14 = 88
-      memory[13] = 32'h05800713;
-
-      // 15. NOP
-      memory[14] = 32'h00000013;
+        // NOP
+        memory[10] = 32'h00000013;
 
     end
 
