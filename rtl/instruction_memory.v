@@ -10,51 +10,77 @@ module instruction_memory (
     initial begin
 
         // ==========================================
-        // — I-TYPE & MEMORY VERIFICATION
+        //  BRANCH & JUMP VERIFICATION
         // ==========================================
 
-        // ADDI x5, x0, 25
-        // x5 = 25
-        memory[0] = 32'h01900293;
+        // 0x00: ADDI x5, x0, 10
+        // x5 = 10
+        memory[0] = 32'h00A00293;
 
-        // ADDI x6, x0, 15
-        // x6 = 15
-        memory[1] = 32'h00F00313;
+        // 0x04: ADDI x6, x0, 10
+        // x6 = 10
+        memory[1] = 32'h00A00313;
 
-        // ANDI x7, x5, 15
-        // x7 = 25 & 15 = 9
-        memory[2] = 32'h00F2F393;
+        // 0x08: BEQ x5, x6, +8
+        // TAKEN → jump to 0x10
+        memory[2] = 32'h00628463;
 
-        // ORI x8, x6, 16
-        // x8 = 15 | 16 = 31
-        memory[3] = 32'h01036413;
+        // 0x0C: ADDI x7, x0, 99
+        // SKIPPED
+        memory[3] = 32'h06300393;
 
-        // SW x8, 0(x0)
-        // Memory[0] = 31
-        memory[4] = 32'h00802023;
+        // 0x10: ADDI x7, x0, 77
+        // x7 = 77
+        memory[4] = 32'h04D00393;
 
-        // LW x9, 0(x0)
-        // x9 = Memory[0] = 31
-        memory[5] = 32'h00002483;
+        // 0x14: ADDI x8, x0, 20
+        // x8 = 20
+        memory[5] = 32'h01400413;
 
-        // ADDI x10, x9, 5
-        // x10 = 31 + 5 = 36
-        memory[6] = 32'h00548513;
+        // 0x18: BNE x5, x6, +8
+        // NOT TAKEN because x5 == x6
+        memory[6] = 32'h00629463;
 
-        // SW x10, 4(x0)
-        // Memory[1] = 36
-        memory[7] = 32'h00A02223;
+        // 0x1C: ADDI x9, x0, 55
+        // EXECUTED
+        memory[7] = 32'h03700493;
 
-        // LW x11, 4(x0)
-        // x11 = Memory[1] = 36
-        memory[8] = 32'h00402583;
+        // 0x20: ADDI x10, x0, 25
+        // EXECUTED
+        memory[8] = 32'h01900513;
 
-        // ADD x12, x9, x11
-        // x12 = 31 + 36 = 67
-        memory[9] = 32'h00B48633;
+        // 0x24: ADDI x11, x0, 30
+        // x11 = 30
+        memory[9] = 32'h01E00593;
 
-        // NOP
-        memory[10] = 32'h00000013;
+        // 0x28: BNE x5, x8, +8
+        // TAKEN because 10 != 20
+        // Jump to 0x30
+        memory[10] = 32'h00829463;
+
+        // 0x2C: ADDI x12, x0, 99
+        // SKIPPED
+        memory[11] = 32'h06300613;
+
+        // 0x30: ADDI x12, x0, 66
+        // x12 = 66
+        memory[12] = 32'h04200613;
+
+        // 0x34: JAL x13, +8
+        // x13 = PC + 4 = 0x38
+        // Jump to 0x3C
+        memory[13] = 32'h008006EF;
+
+        // 0x38: ADDI x14, x0, 99
+        // SKIPPED
+        memory[14] = 32'h06300713;
+
+        // 0x3C: ADDI x14, x0, 88
+        // x14 = 88
+        memory[15] = 32'h05800713;
+
+        // 0x40: NOP
+        memory[16] = 32'h00000013;
 
     end
 
