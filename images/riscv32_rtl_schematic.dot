@@ -1,0 +1,14 @@
+digraph "top" {
+label="top";
+rankdir="LR";
+remincross=true;
+n1 [ shape=octagon, label="clk", color="black", fontcolor="black" ];
+n2 [ shape=octagon, label="instruction", color="black", fontcolor="black" ];
+n3 [ shape=octagon, label="pc", color="black", fontcolor="black" ];
+n4 [ shape=octagon, label="reset", color="black", fontcolor="black" ];
+c5 [ shape=record, label="{{<p1> clk|<p4> reset}|cpu\nriscv_cpu|{<p2> instruction|<p3> pc}}",  ];
+n1:e -> c5:p1:w [color="black", fontcolor="black", label=""];
+c5:p2:e -> n2:w [color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+c5:p3:e -> n3:w [color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+n4:e -> c5:p4:w [color="black", fontcolor="black", label=""];
+}

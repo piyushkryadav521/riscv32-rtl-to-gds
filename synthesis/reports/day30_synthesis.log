@@ -1,0 +1,2304 @@
+
+ /----------------------------------------------------------------------------\
+ |                                                                            |
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |                                                                            |
+ |  Copyright (C) 2012 - 2020  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |                                                                            |
+ |  Permission to use, copy, modify, and/or distribute this software for any  |
+ |  purpose with or without fee is hereby granted, provided that the above    |
+ |  copyright notice and this permission notice appear in all copies.         |
+ |                                                                            |
+ |  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES  |
+ |  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF          |
+ |  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR   |
+ |  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES    |
+ |  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN     |
+ |  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF   |
+ |  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.            |
+ |                                                                            |
+ \----------------------------------------------------------------------------/
+
+ Yosys 0.33 (git sha1 2584903a060)
+
+
+-- Executing script file `synthesis/synth.ys' --
+
+1. Executing Verilog-2005 frontend: rtl/program_counter.v
+Parsing Verilog input from `rtl/program_counter.v' to AST representation.
+Generating RTLIL representation for module `\program_counter'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: rtl/instruction_memory.v
+Parsing Verilog input from `rtl/instruction_memory.v' to AST representation.
+Generating RTLIL representation for module `\instruction_memory'.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: rtl/instruction_decoder.v
+Parsing Verilog input from `rtl/instruction_decoder.v' to AST representation.
+Generating RTLIL representation for module `\instruction_decoder'.
+Successfully finished Verilog frontend.
+
+4. Executing Verilog-2005 frontend: rtl/register_file.v
+Parsing Verilog input from `rtl/register_file.v' to AST representation.
+Generating RTLIL representation for module `\register_file'.
+Warning: Replacing memory \registers with list of registers. See rtl/register_file.v:27
+Successfully finished Verilog frontend.
+
+5. Executing Verilog-2005 frontend: rtl/immediate_generator.v
+Parsing Verilog input from `rtl/immediate_generator.v' to AST representation.
+Generating RTLIL representation for module `\immediate_generator'.
+Successfully finished Verilog frontend.
+
+6. Executing Verilog-2005 frontend: rtl/alu.v
+Parsing Verilog input from `rtl/alu.v' to AST representation.
+Generating RTLIL representation for module `\alu'.
+Successfully finished Verilog frontend.
+
+7. Executing Verilog-2005 frontend: rtl/alu_control.v
+Parsing Verilog input from `rtl/alu_control.v' to AST representation.
+Generating RTLIL representation for module `\alu_control'.
+Successfully finished Verilog frontend.
+
+8. Executing Verilog-2005 frontend: rtl/control_unit.v
+Parsing Verilog input from `rtl/control_unit.v' to AST representation.
+Generating RTLIL representation for module `\control_unit'.
+Successfully finished Verilog frontend.
+
+9. Executing Verilog-2005 frontend: rtl/data_memory.v
+Parsing Verilog input from `rtl/data_memory.v' to AST representation.
+Generating RTLIL representation for module `\data_memory'.
+Successfully finished Verilog frontend.
+
+10. Executing Verilog-2005 frontend: rtl/branch_unit.v
+Parsing Verilog input from `rtl/branch_unit.v' to AST representation.
+Generating RTLIL representation for module `\branch_unit'.
+Successfully finished Verilog frontend.
+
+11. Executing Verilog-2005 frontend: rtl/riscv_cpu.v
+Parsing Verilog input from `rtl/riscv_cpu.v' to AST representation.
+Generating RTLIL representation for module `\riscv_cpu'.
+Successfully finished Verilog frontend.
+
+12. Executing Verilog-2005 frontend: rtl/top.v
+Parsing Verilog input from `rtl/top.v' to AST representation.
+Generating RTLIL representation for module `\top'.
+Successfully finished Verilog frontend.
+
+13. Executing HIERARCHY pass (managing design hierarchy).
+
+13.1. Analyzing design hierarchy..
+Top module:  \top
+Used module:     \riscv_cpu
+Used module:         \branch_unit
+Used module:         \data_memory
+Used module:         \alu
+Used module:         \alu_control
+Used module:         \control_unit
+Used module:         \immediate_generator
+Used module:         \register_file
+Used module:         \instruction_decoder
+Used module:         \instruction_memory
+Used module:         \program_counter
+
+13.2. Analyzing design hierarchy..
+Top module:  \top
+Used module:     \riscv_cpu
+Used module:         \branch_unit
+Used module:         \data_memory
+Used module:         \alu
+Used module:         \alu_control
+Used module:         \control_unit
+Used module:         \immediate_generator
+Used module:         \register_file
+Used module:         \instruction_decoder
+Used module:         \instruction_memory
+Used module:         \program_counter
+Removed 0 unused modules.
+
+14. Executing PROC pass (convert processes to netlists).
+
+14.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+14.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 2 switch rules as full_case in process $proc$rtl/riscv_cpu.v:225$128 in module riscv_cpu.
+Marked 4 switch rules as full_case in process $proc$rtl/branch_unit.v:13$114 in module branch_unit.
+Marked 1 switch rules as full_case in process $proc$rtl/data_memory.v:25$96 in module data_memory.
+Marked 1 switch rules as full_case in process $proc$rtl/control_unit.v:15$90 in module control_unit.
+Marked 4 switch rules as full_case in process $proc$rtl/alu_control.v:11$88 in module alu_control.
+Marked 1 switch rules as full_case in process $proc$rtl/alu.v:12$79 in module alu.
+Marked 1 switch rules as full_case in process $proc$rtl/immediate_generator.v:12$78 in module immediate_generator.
+Removed 1 dead cases from process $proc$rtl/register_file.v:0$75 in module register_file.
+Marked 1 switch rules as full_case in process $proc$rtl/register_file.v:0$75 in module register_file.
+Removed 1 dead cases from process $proc$rtl/register_file.v:0$72 in module register_file.
+Marked 1 switch rules as full_case in process $proc$rtl/register_file.v:0$72 in module register_file.
+Marked 3 switch rules as full_case in process $proc$rtl/register_file.v:24$59 in module register_file.
+Marked 1 switch rules as full_case in process $proc$rtl/program_counter.v:12$1 in module program_counter.
+Removed a total of 2 dead cases.
+
+14.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 1 redundant assignment.
+Promoted 41 assignments to connections.
+
+14.4. Executing PROC_INIT pass (extract init attributes).
+
+14.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \reset in `\register_file.$proc$rtl/register_file.v:24$59'.
+Found async reset \reset in `\program_counter.$proc$rtl/program_counter.v:12$1'.
+
+14.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~18 debug messages>
+
+14.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\riscv_cpu.$proc$rtl/riscv_cpu.v:225$128'.
+     1/2: $2\next_pc[31:0]
+     2/2: $1\next_pc[31:0]
+Creating decoders for process `\branch_unit.$proc$rtl/branch_unit.v:13$114'.
+     1/4: $4\branch_taken[0:0]
+     2/4: $3\branch_taken[0:0]
+     3/4: $2\branch_taken[0:0]
+     4/4: $1\branch_taken[0:0]
+Creating decoders for process `\data_memory.$proc$rtl/data_memory.v:0$109'.
+Creating decoders for process `\data_memory.$proc$rtl/data_memory.v:25$96'.
+     1/3: $1$memwr$\memory$rtl/data_memory.v:27$95_EN[31:0]$102
+     2/3: $1$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$101
+     3/3: $1$memwr$\memory$rtl/data_memory.v:27$95_ADDR[7:0]$100
+Creating decoders for process `\control_unit.$proc$rtl/control_unit.v:15$90'.
+     1/7: $1\mem_to_reg[0:0]
+     2/7: $1\alu_src[0:0]
+     3/7: $1\reg_write[0:0]
+     4/7: $1\jump[0:0]
+     5/7: $1\branch[0:0]
+     6/7: $1\mem_write[0:0]
+     7/7: $1\mem_read[0:0]
+Creating decoders for process `\alu_control.$proc$rtl/alu_control.v:11$88'.
+     1/4: $4\alu_control[3:0]
+     2/4: $3\alu_control[3:0]
+     3/4: $2\alu_control[3:0]
+     4/4: $1\alu_control[3:0]
+Creating decoders for process `\alu.$proc$rtl/alu.v:12$79'.
+     1/1: $1\result[31:0]
+Creating decoders for process `\immediate_generator.$proc$rtl/immediate_generator.v:12$78'.
+     1/1: $1\immediate[31:0]
+Creating decoders for process `\register_file.$proc$rtl/register_file.v:0$75'.
+     1/1: $1$mem2reg_rd$\registers$rtl/register_file.v:36$58_DATA[31:0]$77
+Creating decoders for process `\register_file.$proc$rtl/register_file.v:0$72'.
+     1/1: $1$mem2reg_rd$\registers$rtl/register_file.v:35$57_DATA[31:0]$74
+Creating decoders for process `\register_file.$proc$rtl/register_file.v:24$59'.
+     1/37: $2$mem2reg_wr$\registers$rtl/register_file.v:30$56_ADDR[4:0]$66
+     2/37: $2$mem2reg_wr$\registers$rtl/register_file.v:30$56_DATA[31:0]$67
+     3/37: $1$mem2reg_wr$\registers$rtl/register_file.v:30$56_DATA[31:0]$63
+     4/37: $1$mem2reg_wr$\registers$rtl/register_file.v:30$56_ADDR[4:0]$62
+     5/37: $1\i[31:0]
+     6/37: $0\registers[31][31:0]
+     7/37: $0\registers[30][31:0]
+     8/37: $0\registers[29][31:0]
+     9/37: $0\registers[28][31:0]
+    10/37: $0\registers[27][31:0]
+    11/37: $0\registers[26][31:0]
+    12/37: $0\registers[25][31:0]
+    13/37: $0\registers[24][31:0]
+    14/37: $0\registers[23][31:0]
+    15/37: $0\registers[22][31:0]
+    16/37: $0\registers[21][31:0]
+    17/37: $0\registers[20][31:0]
+    18/37: $0\registers[19][31:0]
+    19/37: $0\registers[18][31:0]
+    20/37: $0\registers[17][31:0]
+    21/37: $0\registers[16][31:0]
+    22/37: $0\registers[15][31:0]
+    23/37: $0\registers[14][31:0]
+    24/37: $0\registers[13][31:0]
+    25/37: $0\registers[12][31:0]
+    26/37: $0\registers[11][31:0]
+    27/37: $0\registers[10][31:0]
+    28/37: $0\registers[9][31:0]
+    29/37: $0\registers[8][31:0]
+    30/37: $0\registers[7][31:0]
+    31/37: $0\registers[6][31:0]
+    32/37: $0\registers[5][31:0]
+    33/37: $0\registers[4][31:0]
+    34/37: $0\registers[3][31:0]
+    35/37: $0\registers[2][31:0]
+    36/37: $0\registers[1][31:0]
+    37/37: $0\registers[0][31:0]
+Creating decoders for process `\instruction_memory.$proc$rtl/instruction_memory.v:0$37'.
+Creating decoders for process `\program_counter.$proc$rtl/program_counter.v:12$1'.
+     1/1: $0\pc[31:0]
+
+14.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\riscv_cpu.\next_pc' from process `\riscv_cpu.$proc$rtl/riscv_cpu.v:225$128'.
+No latch inferred for signal `\branch_unit.\branch_taken' from process `\branch_unit.$proc$rtl/branch_unit.v:13$114'.
+No latch inferred for signal `\data_memory.$memwr$\memory$rtl/data_memory.v:18$91_EN' from process `\data_memory.$proc$rtl/data_memory.v:0$109'.
+No latch inferred for signal `\data_memory.$memwr$\memory$rtl/data_memory.v:19$92_EN' from process `\data_memory.$proc$rtl/data_memory.v:0$109'.
+No latch inferred for signal `\data_memory.$memwr$\memory$rtl/data_memory.v:20$93_EN' from process `\data_memory.$proc$rtl/data_memory.v:0$109'.
+No latch inferred for signal `\data_memory.$memwr$\memory$rtl/data_memory.v:21$94_EN' from process `\data_memory.$proc$rtl/data_memory.v:0$109'.
+No latch inferred for signal `\control_unit.\reg_write' from process `\control_unit.$proc$rtl/control_unit.v:15$90'.
+No latch inferred for signal `\control_unit.\mem_read' from process `\control_unit.$proc$rtl/control_unit.v:15$90'.
+No latch inferred for signal `\control_unit.\mem_write' from process `\control_unit.$proc$rtl/control_unit.v:15$90'.
+No latch inferred for signal `\control_unit.\alu_src' from process `\control_unit.$proc$rtl/control_unit.v:15$90'.
+No latch inferred for signal `\control_unit.\mem_to_reg' from process `\control_unit.$proc$rtl/control_unit.v:15$90'.
+No latch inferred for signal `\control_unit.\branch' from process `\control_unit.$proc$rtl/control_unit.v:15$90'.
+No latch inferred for signal `\control_unit.\jump' from process `\control_unit.$proc$rtl/control_unit.v:15$90'.
+No latch inferred for signal `\alu_control.\alu_control' from process `\alu_control.$proc$rtl/alu_control.v:11$88'.
+No latch inferred for signal `\alu.\result' from process `\alu.$proc$rtl/alu.v:12$79'.
+No latch inferred for signal `\immediate_generator.\immediate' from process `\immediate_generator.$proc$rtl/immediate_generator.v:12$78'.
+No latch inferred for signal `\register_file.$mem2reg_rd$\registers$rtl/register_file.v:36$58_DATA' from process `\register_file.$proc$rtl/register_file.v:0$75'.
+No latch inferred for signal `\register_file.$mem2reg_rd$\registers$rtl/register_file.v:35$57_DATA' from process `\register_file.$proc$rtl/register_file.v:0$72'.
+No latch inferred for signal `\instruction_memory.$memwr$\memory$rtl/instruction_memory.v:18$2_EN' from process `\instruction_memory.$proc$rtl/instruction_memory.v:0$37'.
+No latch inferred for signal `\instruction_memory.$memwr$\memory$rtl/instruction_memory.v:22$3_EN' from process `\instruction_memory.$proc$rtl/instruction_memory.v:0$37'.
+No latch inferred for signal `\instruction_memory.$memwr$\memory$rtl/instruction_memory.v:26$4_EN' from process `\instruction_memory.$proc$rtl/instruction_memory.v:0$37'.
+No latch inferred for signal `\instruction_memory.$memwr$\memory$rtl/instruction_memory.v:30$5_EN' from process `\instruction_memory.$proc$rtl/instruction_memory.v:0$37'.
+No latch inferred for signal `\instruction_memory.$memwr$\memory$rtl/instruction_memory.v:34$6_EN' from process `\instruction_memory.$proc$rtl/instruction_memory.v:0$37'.
+No latch inferred for signal `\instruction_memory.$memwr$\memory$rtl/instruction_memory.v:38$7_EN' from process `\instruction_memory.$proc$rtl/instruction_memory.v:0$37'.
+No latch inferred for signal `\instruction_memory.$memwr$\memory$rtl/instruction_memory.v:42$8_EN' from process `\instruction_memory.$proc$rtl/instruction_memory.v:0$37'.
+No latch inferred for signal `\instruction_memory.$memwr$\memory$rtl/instruction_memory.v:46$9_EN' from process `\instruction_memory.$proc$rtl/instruction_memory.v:0$37'.
+No latch inferred for signal `\instruction_memory.$memwr$\memory$rtl/instruction_memory.v:50$10_EN' from process `\instruction_memory.$proc$rtl/instruction_memory.v:0$37'.
+No latch inferred for signal `\instruction_memory.$memwr$\memory$rtl/instruction_memory.v:54$11_EN' from process `\instruction_memory.$proc$rtl/instruction_memory.v:0$37'.
+No latch inferred for signal `\instruction_memory.$memwr$\memory$rtl/instruction_memory.v:59$12_EN' from process `\instruction_memory.$proc$rtl/instruction_memory.v:0$37'.
+No latch inferred for signal `\instruction_memory.$memwr$\memory$rtl/instruction_memory.v:63$13_EN' from process `\instruction_memory.$proc$rtl/instruction_memory.v:0$37'.
+No latch inferred for signal `\instruction_memory.$memwr$\memory$rtl/instruction_memory.v:67$14_EN' from process `\instruction_memory.$proc$rtl/instruction_memory.v:0$37'.
+No latch inferred for signal `\instruction_memory.$memwr$\memory$rtl/instruction_memory.v:72$15_EN' from process `\instruction_memory.$proc$rtl/instruction_memory.v:0$37'.
+No latch inferred for signal `\instruction_memory.$memwr$\memory$rtl/instruction_memory.v:76$16_EN' from process `\instruction_memory.$proc$rtl/instruction_memory.v:0$37'.
+No latch inferred for signal `\instruction_memory.$memwr$\memory$rtl/instruction_memory.v:80$17_EN' from process `\instruction_memory.$proc$rtl/instruction_memory.v:0$37'.
+No latch inferred for signal `\instruction_memory.$memwr$\memory$rtl/instruction_memory.v:83$18_EN' from process `\instruction_memory.$proc$rtl/instruction_memory.v:0$37'.
+
+14.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\data_memory.$memwr$\memory$rtl/data_memory.v:27$95_ADDR' using process `\data_memory.$proc$rtl/data_memory.v:25$96'.
+  created $dff cell `$procdff$1017' with positive edge clock.
+Creating register for signal `\data_memory.$memwr$\memory$rtl/data_memory.v:27$95_DATA' using process `\data_memory.$proc$rtl/data_memory.v:25$96'.
+  created $dff cell `$procdff$1018' with positive edge clock.
+Creating register for signal `\data_memory.$memwr$\memory$rtl/data_memory.v:27$95_EN' using process `\data_memory.$proc$rtl/data_memory.v:25$96'.
+  created $dff cell `$procdff$1019' with positive edge clock.
+Creating register for signal `\register_file.\i' using process `\register_file.$proc$rtl/register_file.v:24$59'.
+  created $adff cell `$procdff$1020' with positive edge clock and positive level reset.
+Creating register for signal `\register_file.\registers[0]' using process `\register_file.$proc$rtl/register_file.v:24$59'.
+  created $adff cell `$procdff$1021' with positive edge clock and positive level reset.
+Creating register for signal `\register_file.\registers[1]' using process `\register_file.$proc$rtl/register_file.v:24$59'.
+  created $adff cell `$procdff$1022' with positive edge clock and positive level reset.
+Creating register for signal `\register_file.\registers[2]' using process `\register_file.$proc$rtl/register_file.v:24$59'.
+  created $adff cell `$procdff$1023' with positive edge clock and positive level reset.
+Creating register for signal `\register_file.\registers[3]' using process `\register_file.$proc$rtl/register_file.v:24$59'.
+  created $adff cell `$procdff$1024' with positive edge clock and positive level reset.
+Creating register for signal `\register_file.\registers[4]' using process `\register_file.$proc$rtl/register_file.v:24$59'.
+  created $adff cell `$procdff$1025' with positive edge clock and positive level reset.
+Creating register for signal `\register_file.\registers[5]' using process `\register_file.$proc$rtl/register_file.v:24$59'.
+  created $adff cell `$procdff$1026' with positive edge clock and positive level reset.
+Creating register for signal `\register_file.\registers[6]' using process `\register_file.$proc$rtl/register_file.v:24$59'.
+  created $adff cell `$procdff$1027' with positive edge clock and positive level reset.
+Creating register for signal `\register_file.\registers[7]' using process `\register_file.$proc$rtl/register_file.v:24$59'.
+  created $adff cell `$procdff$1028' with positive edge clock and positive level reset.
+Creating register for signal `\register_file.\registers[8]' using process `\register_file.$proc$rtl/register_file.v:24$59'.
+  created $adff cell `$procdff$1029' with positive edge clock and positive level reset.
+Creating register for signal `\register_file.\registers[9]' using process `\register_file.$proc$rtl/register_file.v:24$59'.
+  created $adff cell `$procdff$1030' with positive edge clock and positive level reset.
+Creating register for signal `\register_file.\registers[10]' using process `\register_file.$proc$rtl/register_file.v:24$59'.
+  created $adff cell `$procdff$1031' with positive edge clock and positive level reset.
+Creating register for signal `\register_file.\registers[11]' using process `\register_file.$proc$rtl/register_file.v:24$59'.
+  created $adff cell `$procdff$1032' with positive edge clock and positive level reset.
+Creating register for signal `\register_file.\registers[12]' using process `\register_file.$proc$rtl/register_file.v:24$59'.
+  created $adff cell `$procdff$1033' with positive edge clock and positive level reset.
+Creating register for signal `\register_file.\registers[13]' using process `\register_file.$proc$rtl/register_file.v:24$59'.
+  created $adff cell `$procdff$1034' with positive edge clock and positive level reset.
+Creating register for signal `\register_file.\registers[14]' using process `\register_file.$proc$rtl/register_file.v:24$59'.
+  created $adff cell `$procdff$1035' with positive edge clock and positive level reset.
+Creating register for signal `\register_file.\registers[15]' using process `\register_file.$proc$rtl/register_file.v:24$59'.
+  created $adff cell `$procdff$1036' with positive edge clock and positive level reset.
+Creating register for signal `\register_file.\registers[16]' using process `\register_file.$proc$rtl/register_file.v:24$59'.
+  created $adff cell `$procdff$1037' with positive edge clock and positive level reset.
+Creating register for signal `\register_file.\registers[17]' using process `\register_file.$proc$rtl/register_file.v:24$59'.
+  created $adff cell `$procdff$1038' with positive edge clock and positive level reset.
+Creating register for signal `\register_file.\registers[18]' using process `\register_file.$proc$rtl/register_file.v:24$59'.
+  created $adff cell `$procdff$1039' with positive edge clock and positive level reset.
+Creating register for signal `\register_file.\registers[19]' using process `\register_file.$proc$rtl/register_file.v:24$59'.
+  created $adff cell `$procdff$1040' with positive edge clock and positive level reset.
+Creating register for signal `\register_file.\registers[20]' using process `\register_file.$proc$rtl/register_file.v:24$59'.
+  created $adff cell `$procdff$1041' with positive edge clock and positive level reset.
+Creating register for signal `\register_file.\registers[21]' using process `\register_file.$proc$rtl/register_file.v:24$59'.
+  created $adff cell `$procdff$1042' with positive edge clock and positive level reset.
+Creating register for signal `\register_file.\registers[22]' using process `\register_file.$proc$rtl/register_file.v:24$59'.
+  created $adff cell `$procdff$1043' with positive edge clock and positive level reset.
+Creating register for signal `\register_file.\registers[23]' using process `\register_file.$proc$rtl/register_file.v:24$59'.
+  created $adff cell `$procdff$1044' with positive edge clock and positive level reset.
+Creating register for signal `\register_file.\registers[24]' using process `\register_file.$proc$rtl/register_file.v:24$59'.
+  created $adff cell `$procdff$1045' with positive edge clock and positive level reset.
+Creating register for signal `\register_file.\registers[25]' using process `\register_file.$proc$rtl/register_file.v:24$59'.
+  created $adff cell `$procdff$1046' with positive edge clock and positive level reset.
+Creating register for signal `\register_file.\registers[26]' using process `\register_file.$proc$rtl/register_file.v:24$59'.
+  created $adff cell `$procdff$1047' with positive edge clock and positive level reset.
+Creating register for signal `\register_file.\registers[27]' using process `\register_file.$proc$rtl/register_file.v:24$59'.
+  created $adff cell `$procdff$1048' with positive edge clock and positive level reset.
+Creating register for signal `\register_file.\registers[28]' using process `\register_file.$proc$rtl/register_file.v:24$59'.
+  created $adff cell `$procdff$1049' with positive edge clock and positive level reset.
+Creating register for signal `\register_file.\registers[29]' using process `\register_file.$proc$rtl/register_file.v:24$59'.
+  created $adff cell `$procdff$1050' with positive edge clock and positive level reset.
+Creating register for signal `\register_file.\registers[30]' using process `\register_file.$proc$rtl/register_file.v:24$59'.
+  created $adff cell `$procdff$1051' with positive edge clock and positive level reset.
+Creating register for signal `\register_file.\registers[31]' using process `\register_file.$proc$rtl/register_file.v:24$59'.
+  created $adff cell `$procdff$1052' with positive edge clock and positive level reset.
+Creating register for signal `\register_file.$mem2reg_wr$\registers$rtl/register_file.v:30$56_ADDR' using process `\register_file.$proc$rtl/register_file.v:24$59'.
+  created $adff cell `$procdff$1053' with positive edge clock and positive level reset.
+Creating register for signal `\register_file.$mem2reg_wr$\registers$rtl/register_file.v:30$56_DATA' using process `\register_file.$proc$rtl/register_file.v:24$59'.
+  created $adff cell `$procdff$1054' with positive edge clock and positive level reset.
+Creating register for signal `\program_counter.\pc' using process `\program_counter.$proc$rtl/program_counter.v:12$1'.
+  created $adff cell `$procdff$1055' with positive edge clock and positive level reset.
+
+14.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+14.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 2 empty switches in `\riscv_cpu.$proc$rtl/riscv_cpu.v:225$128'.
+Removing empty process `riscv_cpu.$proc$rtl/riscv_cpu.v:225$128'.
+Found and cleaned up 4 empty switches in `\branch_unit.$proc$rtl/branch_unit.v:13$114'.
+Removing empty process `branch_unit.$proc$rtl/branch_unit.v:13$114'.
+Removing empty process `data_memory.$proc$rtl/data_memory.v:0$109'.
+Found and cleaned up 1 empty switch in `\data_memory.$proc$rtl/data_memory.v:25$96'.
+Removing empty process `data_memory.$proc$rtl/data_memory.v:25$96'.
+Found and cleaned up 1 empty switch in `\control_unit.$proc$rtl/control_unit.v:15$90'.
+Removing empty process `control_unit.$proc$rtl/control_unit.v:15$90'.
+Found and cleaned up 4 empty switches in `\alu_control.$proc$rtl/alu_control.v:11$88'.
+Removing empty process `alu_control.$proc$rtl/alu_control.v:11$88'.
+Found and cleaned up 1 empty switch in `\alu.$proc$rtl/alu.v:12$79'.
+Removing empty process `alu.$proc$rtl/alu.v:12$79'.
+Found and cleaned up 1 empty switch in `\immediate_generator.$proc$rtl/immediate_generator.v:12$78'.
+Removing empty process `immediate_generator.$proc$rtl/immediate_generator.v:12$78'.
+Found and cleaned up 1 empty switch in `\register_file.$proc$rtl/register_file.v:0$75'.
+Removing empty process `register_file.$proc$rtl/register_file.v:0$75'.
+Found and cleaned up 1 empty switch in `\register_file.$proc$rtl/register_file.v:0$72'.
+Removing empty process `register_file.$proc$rtl/register_file.v:0$72'.
+Found and cleaned up 2 empty switches in `\register_file.$proc$rtl/register_file.v:24$59'.
+Removing empty process `register_file.$proc$rtl/register_file.v:24$59'.
+Removing empty process `instruction_memory.$proc$rtl/instruction_memory.v:0$37'.
+Removing empty process `program_counter.$proc$rtl/program_counter.v:12$1'.
+Cleaned up 18 empty switches.
+
+14.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+Optimizing module riscv_cpu.
+Optimizing module branch_unit.
+<suppressed ~2 debug messages>
+Optimizing module data_memory.
+Optimizing module control_unit.
+Optimizing module alu_control.
+<suppressed ~2 debug messages>
+Optimizing module alu.
+<suppressed ~2 debug messages>
+Optimizing module immediate_generator.
+Optimizing module register_file.
+<suppressed ~6 debug messages>
+Optimizing module instruction_decoder.
+Optimizing module instruction_memory.
+Optimizing module program_counter.
+
+15. Executing OPT pass (performing simple optimizations).
+
+15.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+Optimizing module riscv_cpu.
+Optimizing module branch_unit.
+Optimizing module data_memory.
+Optimizing module control_unit.
+Optimizing module alu_control.
+Optimizing module alu.
+Optimizing module immediate_generator.
+Optimizing module register_file.
+Optimizing module instruction_decoder.
+Optimizing module instruction_memory.
+Optimizing module program_counter.
+
+15.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+Finding identical cells in module `\riscv_cpu'.
+<suppressed ~9 debug messages>
+Finding identical cells in module `\branch_unit'.
+<suppressed ~6 debug messages>
+Finding identical cells in module `\data_memory'.
+Finding identical cells in module `\control_unit'.
+<suppressed ~24 debug messages>
+Finding identical cells in module `\alu_control'.
+<suppressed ~18 debug messages>
+Finding identical cells in module `\alu'.
+Finding identical cells in module `\immediate_generator'.
+Finding identical cells in module `\register_file'.
+<suppressed ~6 debug messages>
+Finding identical cells in module `\instruction_decoder'.
+Finding identical cells in module `\instruction_memory'.
+Finding identical cells in module `\program_counter'.
+Removed a total of 21 cells.
+
+15.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \top..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \riscv_cpu..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 1/2 on $mux $procmux$135.
+Running muxtree optimizer on module \branch_unit..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 2/2 on $mux $procmux$157.
+    dead port 2/2 on $mux $procmux$155.
+    dead port 2/2 on $mux $procmux$147.
+    dead port 2/2 on $mux $procmux$145.
+    dead port 2/2 on $mux $procmux$164.
+Running muxtree optimizer on module \data_memory..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \control_unit..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \alu_control..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 2/2 on $mux $procmux$252.
+    dead port 2/2 on $mux $procmux$250.
+    dead port 2/2 on $mux $procmux$235.
+    dead port 2/2 on $mux $procmux$266.
+Running muxtree optimizer on module \alu..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \immediate_generator..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \register_file..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 1/2 on $mux $procmux$359.
+    dead port 2/2 on $mux $procmux$359.
+    dead port 1/2 on $mux $procmux$356.
+    dead port 2/2 on $mux $procmux$356.
+    dead port 32/33 on $pmux $procmux$322.
+    dead port 32/33 on $pmux $procmux$289.
+Running muxtree optimizer on module \instruction_decoder..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \instruction_memory..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \program_counter..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 16 multiplexer ports.
+<suppressed ~52 debug messages>
+
+15.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \top.
+  Optimizing cells in module \riscv_cpu.
+  Optimizing cells in module \branch_unit.
+  Optimizing cells in module \data_memory.
+    Consolidated identical input bits for $mux cell $procmux$170:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$170_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$170_Y [0]
+      New connections: $procmux$170_Y [31:1] = { $procmux$170_Y [0] $procmux$170_Y [0] $procmux$170_Y [0] $procmux$170_Y [0] $procmux$170_Y [0] $procmux$170_Y [0] $procmux$170_Y [0] $procmux$170_Y [0] $procmux$170_Y [0] $procmux$170_Y [0] $procmux$170_Y [0] $procmux$170_Y [0] $procmux$170_Y [0] $procmux$170_Y [0] $procmux$170_Y [0] $procmux$170_Y [0] $procmux$170_Y [0] $procmux$170_Y [0] $procmux$170_Y [0] $procmux$170_Y [0] $procmux$170_Y [0] $procmux$170_Y [0] $procmux$170_Y [0] $procmux$170_Y [0] $procmux$170_Y [0] $procmux$170_Y [0] $procmux$170_Y [0] $procmux$170_Y [0] $procmux$170_Y [0] $procmux$170_Y [0] $procmux$170_Y [0] }
+  Optimizing cells in module \data_memory.
+  Optimizing cells in module \control_unit.
+    New ctrl vector for $pmux cell $procmux$194: $auto$opt_reduce.cc:134:opt_pmux$1058
+    New ctrl vector for $pmux cell $procmux$187: $auto$opt_reduce.cc:134:opt_pmux$1060
+  Optimizing cells in module \control_unit.
+  Optimizing cells in module \alu_control.
+  Optimizing cells in module \alu.
+  Optimizing cells in module \immediate_generator.
+    New ctrl vector for $pmux cell $procmux$282: { $auto$opt_reduce.cc:134:opt_pmux$1062 $procmux$286_CMP $procmux$285_CMP $procmux$284_CMP $procmux$283_CTRL }
+  Optimizing cells in module \immediate_generator.
+  Optimizing cells in module \register_file.
+  Optimizing cells in module \instruction_decoder.
+  Optimizing cells in module \instruction_memory.
+  Optimizing cells in module \program_counter.
+Performed a total of 4 changes.
+
+15.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+Finding identical cells in module `\riscv_cpu'.
+Finding identical cells in module `\branch_unit'.
+Finding identical cells in module `\data_memory'.
+Finding identical cells in module `\control_unit'.
+<suppressed ~3 debug messages>
+Finding identical cells in module `\alu_control'.
+Finding identical cells in module `\alu'.
+Finding identical cells in module `\immediate_generator'.
+Finding identical cells in module `\register_file'.
+Finding identical cells in module `\instruction_decoder'.
+Finding identical cells in module `\instruction_memory'.
+Finding identical cells in module `\program_counter'.
+Removed a total of 1 cells.
+
+15.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $procdff$1051 ($adff) from module register_file (D = \write_data, Q = \registers[30]).
+Adding EN signal on $procdff$1052 ($adff) from module register_file (D = \write_data, Q = \registers[31]).
+Handling D = Q on $procdff$1020 ($adff) from module register_file (removing D path).
+Adding EN signal on $procdff$1021 ($adff) from module register_file (D = \write_data, Q = \registers[0]).
+Adding EN signal on $procdff$1022 ($adff) from module register_file (D = \write_data, Q = \registers[1]).
+Adding EN signal on $procdff$1023 ($adff) from module register_file (D = \write_data, Q = \registers[2]).
+Adding EN signal on $procdff$1024 ($adff) from module register_file (D = \write_data, Q = \registers[3]).
+Adding EN signal on $procdff$1025 ($adff) from module register_file (D = \write_data, Q = \registers[4]).
+Adding EN signal on $procdff$1026 ($adff) from module register_file (D = \write_data, Q = \registers[5]).
+Adding EN signal on $procdff$1027 ($adff) from module register_file (D = \write_data, Q = \registers[6]).
+Adding EN signal on $procdff$1028 ($adff) from module register_file (D = \write_data, Q = \registers[7]).
+Adding EN signal on $procdff$1029 ($adff) from module register_file (D = \write_data, Q = \registers[8]).
+Adding EN signal on $procdff$1030 ($adff) from module register_file (D = \write_data, Q = \registers[9]).
+Adding EN signal on $procdff$1031 ($adff) from module register_file (D = \write_data, Q = \registers[10]).
+Adding EN signal on $procdff$1032 ($adff) from module register_file (D = \write_data, Q = \registers[11]).
+Adding EN signal on $procdff$1033 ($adff) from module register_file (D = \write_data, Q = \registers[12]).
+Adding EN signal on $procdff$1034 ($adff) from module register_file (D = \write_data, Q = \registers[13]).
+Adding EN signal on $procdff$1035 ($adff) from module register_file (D = \write_data, Q = \registers[14]).
+Adding EN signal on $procdff$1036 ($adff) from module register_file (D = \write_data, Q = \registers[15]).
+Adding EN signal on $procdff$1037 ($adff) from module register_file (D = \write_data, Q = \registers[16]).
+Adding EN signal on $procdff$1038 ($adff) from module register_file (D = \write_data, Q = \registers[17]).
+Adding EN signal on $procdff$1039 ($adff) from module register_file (D = \write_data, Q = \registers[18]).
+Adding EN signal on $procdff$1040 ($adff) from module register_file (D = \write_data, Q = \registers[19]).
+Adding EN signal on $procdff$1041 ($adff) from module register_file (D = \write_data, Q = \registers[20]).
+Adding EN signal on $procdff$1042 ($adff) from module register_file (D = \write_data, Q = \registers[21]).
+Adding EN signal on $procdff$1043 ($adff) from module register_file (D = \write_data, Q = \registers[22]).
+Adding EN signal on $procdff$1044 ($adff) from module register_file (D = \write_data, Q = \registers[23]).
+Adding EN signal on $procdff$1045 ($adff) from module register_file (D = \write_data, Q = \registers[24]).
+Adding EN signal on $procdff$1046 ($adff) from module register_file (D = \write_data, Q = \registers[25]).
+Adding EN signal on $procdff$1047 ($adff) from module register_file (D = \write_data, Q = \registers[26]).
+Adding EN signal on $procdff$1048 ($adff) from module register_file (D = \write_data, Q = \registers[27]).
+Adding EN signal on $procdff$1049 ($adff) from module register_file (D = \write_data, Q = \registers[28]).
+Adding EN signal on $procdff$1050 ($adff) from module register_file (D = \write_data, Q = \registers[29]).
+Setting constant 0-bit at position 0 on $procdff$1020 ($dlatch) from module register_file.
+Setting constant 0-bit at position 1 on $procdff$1020 ($dlatch) from module register_file.
+Setting constant 0-bit at position 2 on $procdff$1020 ($dlatch) from module register_file.
+Setting constant 0-bit at position 3 on $procdff$1020 ($dlatch) from module register_file.
+Setting constant 0-bit at position 4 on $procdff$1020 ($dlatch) from module register_file.
+Setting constant 1-bit at position 5 on $procdff$1020 ($dlatch) from module register_file.
+Setting constant 0-bit at position 6 on $procdff$1020 ($dlatch) from module register_file.
+Setting constant 0-bit at position 7 on $procdff$1020 ($dlatch) from module register_file.
+Setting constant 0-bit at position 8 on $procdff$1020 ($dlatch) from module register_file.
+Setting constant 0-bit at position 9 on $procdff$1020 ($dlatch) from module register_file.
+Setting constant 0-bit at position 10 on $procdff$1020 ($dlatch) from module register_file.
+Setting constant 0-bit at position 11 on $procdff$1020 ($dlatch) from module register_file.
+Setting constant 0-bit at position 12 on $procdff$1020 ($dlatch) from module register_file.
+Setting constant 0-bit at position 13 on $procdff$1020 ($dlatch) from module register_file.
+Setting constant 0-bit at position 14 on $procdff$1020 ($dlatch) from module register_file.
+Setting constant 0-bit at position 15 on $procdff$1020 ($dlatch) from module register_file.
+Setting constant 0-bit at position 16 on $procdff$1020 ($dlatch) from module register_file.
+Setting constant 0-bit at position 17 on $procdff$1020 ($dlatch) from module register_file.
+Setting constant 0-bit at position 18 on $procdff$1020 ($dlatch) from module register_file.
+Setting constant 0-bit at position 19 on $procdff$1020 ($dlatch) from module register_file.
+Setting constant 0-bit at position 20 on $procdff$1020 ($dlatch) from module register_file.
+Setting constant 0-bit at position 21 on $procdff$1020 ($dlatch) from module register_file.
+Setting constant 0-bit at position 22 on $procdff$1020 ($dlatch) from module register_file.
+Setting constant 0-bit at position 23 on $procdff$1020 ($dlatch) from module register_file.
+Setting constant 0-bit at position 24 on $procdff$1020 ($dlatch) from module register_file.
+Setting constant 0-bit at position 25 on $procdff$1020 ($dlatch) from module register_file.
+Setting constant 0-bit at position 26 on $procdff$1020 ($dlatch) from module register_file.
+Setting constant 0-bit at position 27 on $procdff$1020 ($dlatch) from module register_file.
+Setting constant 0-bit at position 28 on $procdff$1020 ($dlatch) from module register_file.
+Setting constant 0-bit at position 29 on $procdff$1020 ($dlatch) from module register_file.
+Setting constant 0-bit at position 30 on $procdff$1020 ($dlatch) from module register_file.
+Setting constant 0-bit at position 31 on $procdff$1020 ($dlatch) from module register_file.
+Setting constant 1-bit at position 0 on $procdff$1054 ($adff) from module register_file.
+Setting constant 1-bit at position 1 on $procdff$1054 ($adff) from module register_file.
+Setting constant 1-bit at position 2 on $procdff$1054 ($adff) from module register_file.
+Setting constant 1-bit at position 3 on $procdff$1054 ($adff) from module register_file.
+Setting constant 1-bit at position 4 on $procdff$1054 ($adff) from module register_file.
+Setting constant 1-bit at position 5 on $procdff$1054 ($adff) from module register_file.
+Setting constant 1-bit at position 6 on $procdff$1054 ($adff) from module register_file.
+Setting constant 1-bit at position 7 on $procdff$1054 ($adff) from module register_file.
+Setting constant 1-bit at position 8 on $procdff$1054 ($adff) from module register_file.
+Setting constant 1-bit at position 9 on $procdff$1054 ($adff) from module register_file.
+Setting constant 1-bit at position 10 on $procdff$1054 ($adff) from module register_file.
+Setting constant 1-bit at position 11 on $procdff$1054 ($adff) from module register_file.
+Setting constant 1-bit at position 12 on $procdff$1054 ($adff) from module register_file.
+Setting constant 1-bit at position 13 on $procdff$1054 ($adff) from module register_file.
+Setting constant 1-bit at position 14 on $procdff$1054 ($adff) from module register_file.
+Setting constant 1-bit at position 15 on $procdff$1054 ($adff) from module register_file.
+Setting constant 1-bit at position 16 on $procdff$1054 ($adff) from module register_file.
+Setting constant 1-bit at position 17 on $procdff$1054 ($adff) from module register_file.
+Setting constant 1-bit at position 18 on $procdff$1054 ($adff) from module register_file.
+Setting constant 1-bit at position 19 on $procdff$1054 ($adff) from module register_file.
+Setting constant 1-bit at position 20 on $procdff$1054 ($adff) from module register_file.
+Setting constant 1-bit at position 21 on $procdff$1054 ($adff) from module register_file.
+Setting constant 1-bit at position 22 on $procdff$1054 ($adff) from module register_file.
+Setting constant 1-bit at position 23 on $procdff$1054 ($adff) from module register_file.
+Setting constant 1-bit at position 24 on $procdff$1054 ($adff) from module register_file.
+Setting constant 1-bit at position 25 on $procdff$1054 ($adff) from module register_file.
+Setting constant 1-bit at position 26 on $procdff$1054 ($adff) from module register_file.
+Setting constant 1-bit at position 27 on $procdff$1054 ($adff) from module register_file.
+Setting constant 1-bit at position 28 on $procdff$1054 ($adff) from module register_file.
+Setting constant 1-bit at position 29 on $procdff$1054 ($adff) from module register_file.
+Setting constant 1-bit at position 30 on $procdff$1054 ($adff) from module register_file.
+Setting constant 1-bit at position 31 on $procdff$1054 ($adff) from module register_file.
+Setting constant 1-bit at position 0 on $procdff$1053 ($adff) from module register_file.
+Setting constant 1-bit at position 1 on $procdff$1053 ($adff) from module register_file.
+Setting constant 1-bit at position 2 on $procdff$1053 ($adff) from module register_file.
+Setting constant 1-bit at position 3 on $procdff$1053 ($adff) from module register_file.
+Setting constant 1-bit at position 4 on $procdff$1053 ($adff) from module register_file.
+
+15.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+Finding unused cells or wires in module \riscv_cpu..
+Finding unused cells or wires in module \branch_unit..
+Finding unused cells or wires in module \data_memory..
+Finding unused cells or wires in module \control_unit..
+Finding unused cells or wires in module \alu_control..
+Finding unused cells or wires in module \alu..
+Finding unused cells or wires in module \immediate_generator..
+Finding unused cells or wires in module \register_file..
+Finding unused cells or wires in module \instruction_decoder..
+Finding unused cells or wires in module \instruction_memory..
+Finding unused cells or wires in module \program_counter..
+Removed 70 unused cells and 301 unused wires.
+<suppressed ~81 debug messages>
+
+15.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module alu.
+Optimizing module alu_control.
+Optimizing module branch_unit.
+Optimizing module control_unit.
+Optimizing module data_memory.
+Optimizing module immediate_generator.
+Optimizing module instruction_decoder.
+Optimizing module instruction_memory.
+Optimizing module program_counter.
+Optimizing module register_file.
+Optimizing module riscv_cpu.
+Optimizing module top.
+
+15.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+15.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \alu..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \alu_control..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \branch_unit..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \control_unit..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \data_memory..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \immediate_generator..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \instruction_decoder..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \instruction_memory..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \program_counter..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \register_file..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \riscv_cpu..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \top..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+<suppressed ~19 debug messages>
+
+15.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \alu.
+  Optimizing cells in module \alu_control.
+  Optimizing cells in module \branch_unit.
+  Optimizing cells in module \control_unit.
+  Optimizing cells in module \data_memory.
+  Optimizing cells in module \immediate_generator.
+  Optimizing cells in module \instruction_decoder.
+  Optimizing cells in module \instruction_memory.
+  Optimizing cells in module \program_counter.
+  Optimizing cells in module \register_file.
+  Optimizing cells in module \riscv_cpu.
+  Optimizing cells in module \top.
+Performed a total of 0 changes.
+
+15.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\alu'.
+Finding identical cells in module `\alu_control'.
+Finding identical cells in module `\branch_unit'.
+Finding identical cells in module `\control_unit'.
+Finding identical cells in module `\data_memory'.
+Finding identical cells in module `\immediate_generator'.
+Finding identical cells in module `\instruction_decoder'.
+Finding identical cells in module `\instruction_memory'.
+Finding identical cells in module `\program_counter'.
+Finding identical cells in module `\register_file'.
+Finding identical cells in module `\riscv_cpu'.
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+15.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+15.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \alu..
+Finding unused cells or wires in module \alu_control..
+Finding unused cells or wires in module \branch_unit..
+Finding unused cells or wires in module \control_unit..
+Finding unused cells or wires in module \data_memory..
+Finding unused cells or wires in module \immediate_generator..
+Finding unused cells or wires in module \instruction_decoder..
+Finding unused cells or wires in module \instruction_memory..
+Finding unused cells or wires in module \program_counter..
+Finding unused cells or wires in module \register_file..
+Finding unused cells or wires in module \riscv_cpu..
+Finding unused cells or wires in module \top..
+
+15.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module alu.
+Optimizing module alu_control.
+Optimizing module branch_unit.
+Optimizing module control_unit.
+Optimizing module data_memory.
+Optimizing module immediate_generator.
+Optimizing module instruction_decoder.
+Optimizing module instruction_memory.
+Optimizing module program_counter.
+Optimizing module register_file.
+Optimizing module riscv_cpu.
+Optimizing module top.
+
+15.16. Finished OPT passes. (There is nothing left to do.)
+
+16. Executing FSM pass (extract and optimize FSM).
+
+16.1. Executing FSM_DETECT pass (finding FSMs in design).
+
+16.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+16.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+16.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \alu..
+Finding unused cells or wires in module \alu_control..
+Finding unused cells or wires in module \branch_unit..
+Finding unused cells or wires in module \control_unit..
+Finding unused cells or wires in module \data_memory..
+Finding unused cells or wires in module \immediate_generator..
+Finding unused cells or wires in module \instruction_decoder..
+Finding unused cells or wires in module \instruction_memory..
+Finding unused cells or wires in module \program_counter..
+Finding unused cells or wires in module \register_file..
+Finding unused cells or wires in module \riscv_cpu..
+Finding unused cells or wires in module \top..
+
+16.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+16.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+16.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+16.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+17. Executing OPT pass (performing simple optimizations).
+
+17.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module alu.
+Optimizing module alu_control.
+Optimizing module branch_unit.
+Optimizing module control_unit.
+Optimizing module data_memory.
+Optimizing module immediate_generator.
+Optimizing module instruction_decoder.
+Optimizing module instruction_memory.
+Optimizing module program_counter.
+Optimizing module register_file.
+Optimizing module riscv_cpu.
+Optimizing module top.
+
+17.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\alu'.
+Finding identical cells in module `\alu_control'.
+Finding identical cells in module `\branch_unit'.
+Finding identical cells in module `\control_unit'.
+Finding identical cells in module `\data_memory'.
+Finding identical cells in module `\immediate_generator'.
+Finding identical cells in module `\instruction_decoder'.
+Finding identical cells in module `\instruction_memory'.
+Finding identical cells in module `\program_counter'.
+Finding identical cells in module `\register_file'.
+Finding identical cells in module `\riscv_cpu'.
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+17.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \alu..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \alu_control..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \branch_unit..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \control_unit..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \data_memory..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \immediate_generator..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \instruction_decoder..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \instruction_memory..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \program_counter..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \register_file..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \riscv_cpu..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \top..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+<suppressed ~19 debug messages>
+
+17.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \alu.
+  Optimizing cells in module \alu_control.
+  Optimizing cells in module \branch_unit.
+  Optimizing cells in module \control_unit.
+  Optimizing cells in module \data_memory.
+  Optimizing cells in module \immediate_generator.
+  Optimizing cells in module \instruction_decoder.
+  Optimizing cells in module \instruction_memory.
+  Optimizing cells in module \program_counter.
+  Optimizing cells in module \register_file.
+  Optimizing cells in module \riscv_cpu.
+  Optimizing cells in module \top.
+Performed a total of 0 changes.
+
+17.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\alu'.
+Finding identical cells in module `\alu_control'.
+Finding identical cells in module `\branch_unit'.
+Finding identical cells in module `\control_unit'.
+Finding identical cells in module `\data_memory'.
+Finding identical cells in module `\immediate_generator'.
+Finding identical cells in module `\instruction_decoder'.
+Finding identical cells in module `\instruction_memory'.
+Finding identical cells in module `\program_counter'.
+Finding identical cells in module `\register_file'.
+Finding identical cells in module `\riscv_cpu'.
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+17.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+17.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \alu..
+Finding unused cells or wires in module \alu_control..
+Finding unused cells or wires in module \branch_unit..
+Finding unused cells or wires in module \control_unit..
+Finding unused cells or wires in module \data_memory..
+Finding unused cells or wires in module \immediate_generator..
+Finding unused cells or wires in module \instruction_decoder..
+Finding unused cells or wires in module \instruction_memory..
+Finding unused cells or wires in module \program_counter..
+Finding unused cells or wires in module \register_file..
+Finding unused cells or wires in module \riscv_cpu..
+Finding unused cells or wires in module \top..
+
+17.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module alu.
+Optimizing module alu_control.
+Optimizing module branch_unit.
+Optimizing module control_unit.
+Optimizing module data_memory.
+Optimizing module immediate_generator.
+Optimizing module instruction_decoder.
+Optimizing module instruction_memory.
+Optimizing module program_counter.
+Optimizing module register_file.
+Optimizing module riscv_cpu.
+Optimizing module top.
+
+17.9. Finished OPT passes. (There is nothing left to do.)
+
+18. Executing MEMORY pass.
+
+18.1. Executing OPT_MEM pass (optimize memories).
+instruction_memory.memory: removing const-1 lane 0
+instruction_memory.memory: removing const-1 lane 1
+instruction_memory.memory: removing const-0 lane 11
+instruction_memory.memory: removing const-0 lane 13
+instruction_memory.memory: removing const-0 lane 14
+instruction_memory.memory: removing const-0 lane 16
+instruction_memory.memory: removing const-0 lane 18
+instruction_memory.memory: removing const-0 lane 19
+instruction_memory.memory: removing const-0 lane 27
+instruction_memory.memory: removing const-0 lane 28
+instruction_memory.memory: removing const-0 lane 29
+instruction_memory.memory: removing const-0 lane 30
+instruction_memory.memory: removing const-0 lane 31
+Performed a total of 1 transformations.
+
+18.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+18.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+  Analyzing data_memory.memory write port 0.
+
+18.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+18.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+Checking read port `\memory'[0] in module `\data_memory': no output FF found.
+Checking read port address `\memory'[0] in module `\data_memory': no address FF found.
+Checking read port `\memory'[0] in module `\instruction_memory': no output FF found.
+Checking read port address `\memory'[0] in module `\instruction_memory': no address FF found.
+
+18.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \alu..
+Finding unused cells or wires in module \alu_control..
+Finding unused cells or wires in module \branch_unit..
+Finding unused cells or wires in module \control_unit..
+Finding unused cells or wires in module \data_memory..
+Finding unused cells or wires in module \immediate_generator..
+Finding unused cells or wires in module \instruction_decoder..
+Finding unused cells or wires in module \instruction_memory..
+Finding unused cells or wires in module \program_counter..
+Finding unused cells or wires in module \register_file..
+Finding unused cells or wires in module \riscv_cpu..
+Finding unused cells or wires in module \top..
+
+18.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+18.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+18.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \alu..
+Finding unused cells or wires in module \alu_control..
+Finding unused cells or wires in module \branch_unit..
+Finding unused cells or wires in module \control_unit..
+Finding unused cells or wires in module \data_memory..
+Finding unused cells or wires in module \immediate_generator..
+Finding unused cells or wires in module \instruction_decoder..
+Finding unused cells or wires in module \instruction_memory..
+Finding unused cells or wires in module \program_counter..
+Finding unused cells or wires in module \register_file..
+Finding unused cells or wires in module \riscv_cpu..
+Finding unused cells or wires in module \top..
+
+18.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+18.11. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+Mapping memory \memory in module \data_memory:
+  created 256 $dff cells and 0 static cells of width 32.
+  read interface: 0 $dff and 255 $mux cells.
+  write interface: 256 write mux blocks.
+Mapping memory \memory in module \instruction_memory:
+  created 256 $dff cells and 0 static cells of width 19.
+  read interface: 0 $dff and 255 $mux cells.
+  write interface: 0 write mux blocks.
+
+19. Executing OPT pass (performing simple optimizations).
+
+19.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module alu.
+Optimizing module alu_control.
+Optimizing module branch_unit.
+Optimizing module control_unit.
+Optimizing module data_memory.
+<suppressed ~16 debug messages>
+Optimizing module immediate_generator.
+Optimizing module instruction_decoder.
+Optimizing module instruction_memory.
+<suppressed ~232 debug messages>
+Optimizing module program_counter.
+Optimizing module register_file.
+Optimizing module riscv_cpu.
+Optimizing module top.
+
+19.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\alu'.
+Finding identical cells in module `\alu_control'.
+Finding identical cells in module `\branch_unit'.
+Finding identical cells in module `\control_unit'.
+Finding identical cells in module `\data_memory'.
+Finding identical cells in module `\immediate_generator'.
+Finding identical cells in module `\instruction_decoder'.
+Finding identical cells in module `\instruction_memory'.
+Finding identical cells in module `\program_counter'.
+Finding identical cells in module `\register_file'.
+Finding identical cells in module `\riscv_cpu'.
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+19.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \alu..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \alu_control..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \branch_unit..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \control_unit..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \data_memory..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \immediate_generator..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \instruction_decoder..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \instruction_memory..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \program_counter..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \register_file..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \riscv_cpu..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \top..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+<suppressed ~276 debug messages>
+
+19.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \alu.
+  Optimizing cells in module \alu_control.
+  Optimizing cells in module \branch_unit.
+  Optimizing cells in module \control_unit.
+  Optimizing cells in module \data_memory.
+  Optimizing cells in module \immediate_generator.
+  Optimizing cells in module \instruction_decoder.
+  Optimizing cells in module \instruction_memory.
+  Optimizing cells in module \program_counter.
+  Optimizing cells in module \register_file.
+  Optimizing cells in module \riscv_cpu.
+  Optimizing cells in module \top.
+Performed a total of 0 changes.
+
+19.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\alu'.
+Finding identical cells in module `\alu_control'.
+Finding identical cells in module `\branch_unit'.
+Finding identical cells in module `\control_unit'.
+Finding identical cells in module `\data_memory'.
+Finding identical cells in module `\immediate_generator'.
+Finding identical cells in module `\instruction_decoder'.
+Finding identical cells in module `\instruction_memory'.
+Finding identical cells in module `\program_counter'.
+Finding identical cells in module `\register_file'.
+Finding identical cells in module `\riscv_cpu'.
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+19.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+19.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \alu..
+Finding unused cells or wires in module \alu_control..
+Finding unused cells or wires in module \branch_unit..
+Finding unused cells or wires in module \control_unit..
+Finding unused cells or wires in module \data_memory..
+Finding unused cells or wires in module \immediate_generator..
+Finding unused cells or wires in module \instruction_decoder..
+Finding unused cells or wires in module \instruction_memory..
+Finding unused cells or wires in module \program_counter..
+Finding unused cells or wires in module \register_file..
+Finding unused cells or wires in module \riscv_cpu..
+Finding unused cells or wires in module \top..
+Removed 0 unused cells and 1008 unused wires.
+<suppressed ~2 debug messages>
+
+19.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module alu.
+Optimizing module alu_control.
+Optimizing module branch_unit.
+Optimizing module control_unit.
+Optimizing module data_memory.
+Optimizing module immediate_generator.
+Optimizing module instruction_decoder.
+Optimizing module instruction_memory.
+Optimizing module program_counter.
+Optimizing module register_file.
+Optimizing module riscv_cpu.
+Optimizing module top.
+
+19.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+19.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \alu..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \alu_control..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \branch_unit..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \control_unit..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \data_memory..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \immediate_generator..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \instruction_decoder..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \instruction_memory..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \program_counter..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \register_file..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \riscv_cpu..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \top..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+<suppressed ~276 debug messages>
+
+19.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \alu.
+  Optimizing cells in module \alu_control.
+  Optimizing cells in module \branch_unit.
+  Optimizing cells in module \control_unit.
+  Optimizing cells in module \data_memory.
+  Optimizing cells in module \immediate_generator.
+  Optimizing cells in module \instruction_decoder.
+  Optimizing cells in module \instruction_memory.
+  Optimizing cells in module \program_counter.
+  Optimizing cells in module \register_file.
+  Optimizing cells in module \riscv_cpu.
+  Optimizing cells in module \top.
+Performed a total of 0 changes.
+
+19.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\alu'.
+Finding identical cells in module `\alu_control'.
+Finding identical cells in module `\branch_unit'.
+Finding identical cells in module `\control_unit'.
+Finding identical cells in module `\data_memory'.
+Finding identical cells in module `\immediate_generator'.
+Finding identical cells in module `\instruction_decoder'.
+Finding identical cells in module `\instruction_memory'.
+Finding identical cells in module `\program_counter'.
+Finding identical cells in module `\register_file'.
+Finding identical cells in module `\riscv_cpu'.
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+19.13. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $memory\memory[9]$1181 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[9]).
+Adding EN signal on $memory\memory[99]$1361 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[99]).
+Adding EN signal on $memory\memory[98]$1359 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[98]).
+Adding EN signal on $memory\memory[97]$1357 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[97]).
+Adding EN signal on $memory\memory[96]$1355 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[96]).
+Adding EN signal on $memory\memory[95]$1353 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[95]).
+Adding EN signal on $memory\memory[94]$1351 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[94]).
+Adding EN signal on $memory\memory[93]$1349 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[93]).
+Adding EN signal on $memory\memory[92]$1347 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[92]).
+Adding EN signal on $memory\memory[91]$1345 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[91]).
+Adding EN signal on $memory\memory[90]$1343 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[90]).
+Adding EN signal on $memory\memory[8]$1179 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[8]).
+Adding EN signal on $memory\memory[89]$1341 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[89]).
+Adding EN signal on $memory\memory[88]$1339 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[88]).
+Adding EN signal on $memory\memory[87]$1337 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[87]).
+Adding EN signal on $memory\memory[86]$1335 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[86]).
+Adding EN signal on $memory\memory[85]$1333 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[85]).
+Adding EN signal on $memory\memory[84]$1331 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[84]).
+Adding EN signal on $memory\memory[83]$1329 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[83]).
+Adding EN signal on $memory\memory[82]$1327 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[82]).
+Adding EN signal on $memory\memory[81]$1325 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[81]).
+Adding EN signal on $memory\memory[80]$1323 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[80]).
+Adding EN signal on $memory\memory[7]$1177 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[7]).
+Adding EN signal on $memory\memory[79]$1321 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[79]).
+Adding EN signal on $memory\memory[78]$1319 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[78]).
+Adding EN signal on $memory\memory[77]$1317 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[77]).
+Adding EN signal on $memory\memory[76]$1315 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[76]).
+Adding EN signal on $memory\memory[75]$1313 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[75]).
+Adding EN signal on $memory\memory[74]$1311 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[74]).
+Adding EN signal on $memory\memory[73]$1309 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[73]).
+Adding EN signal on $memory\memory[72]$1307 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[72]).
+Adding EN signal on $memory\memory[71]$1305 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[71]).
+Adding EN signal on $memory\memory[70]$1303 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[70]).
+Adding EN signal on $memory\memory[6]$1175 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[6]).
+Adding EN signal on $memory\memory[69]$1301 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[69]).
+Adding EN signal on $memory\memory[68]$1299 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[68]).
+Adding EN signal on $memory\memory[67]$1297 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[67]).
+Adding EN signal on $memory\memory[66]$1295 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[66]).
+Adding EN signal on $memory\memory[65]$1293 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[65]).
+Adding EN signal on $memory\memory[64]$1291 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[64]).
+Adding EN signal on $memory\memory[63]$1289 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[63]).
+Adding EN signal on $memory\memory[62]$1287 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[62]).
+Adding EN signal on $memory\memory[61]$1285 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[61]).
+Adding EN signal on $memory\memory[60]$1283 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[60]).
+Adding EN signal on $memory\memory[5]$1173 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[5]).
+Adding EN signal on $memory\memory[59]$1281 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[59]).
+Adding EN signal on $memory\memory[58]$1279 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[58]).
+Adding EN signal on $memory\memory[57]$1277 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[57]).
+Adding EN signal on $memory\memory[56]$1275 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[56]).
+Adding EN signal on $memory\memory[55]$1273 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[55]).
+Adding EN signal on $memory\memory[54]$1271 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[54]).
+Adding EN signal on $memory\memory[53]$1269 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[53]).
+Adding EN signal on $memory\memory[52]$1267 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[52]).
+Adding EN signal on $memory\memory[51]$1265 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[51]).
+Adding EN signal on $memory\memory[50]$1263 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[50]).
+Adding EN signal on $memory\memory[4]$1171 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[4]).
+Adding EN signal on $memory\memory[49]$1261 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[49]).
+Adding EN signal on $memory\memory[48]$1259 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[48]).
+Adding EN signal on $memory\memory[47]$1257 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[47]).
+Adding EN signal on $memory\memory[46]$1255 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[46]).
+Adding EN signal on $memory\memory[45]$1253 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[45]).
+Adding EN signal on $memory\memory[44]$1251 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[44]).
+Adding EN signal on $memory\memory[43]$1249 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[43]).
+Adding EN signal on $memory\memory[42]$1247 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[42]).
+Adding EN signal on $memory\memory[41]$1245 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[41]).
+Adding EN signal on $memory\memory[40]$1243 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[40]).
+Adding EN signal on $memory\memory[3]$1169 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[3]).
+Adding EN signal on $memory\memory[39]$1241 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[39]).
+Adding EN signal on $memory\memory[38]$1239 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[38]).
+Adding EN signal on $memory\memory[37]$1237 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[37]).
+Adding EN signal on $memory\memory[36]$1235 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[36]).
+Adding EN signal on $memory\memory[35]$1233 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[35]).
+Adding EN signal on $memory\memory[34]$1231 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[34]).
+Adding EN signal on $memory\memory[33]$1229 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[33]).
+Adding EN signal on $memory\memory[32]$1227 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[32]).
+Adding EN signal on $memory\memory[31]$1225 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[31]).
+Adding EN signal on $memory\memory[30]$1223 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[30]).
+Adding EN signal on $memory\memory[2]$1167 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[2]).
+Adding EN signal on $memory\memory[29]$1221 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[29]).
+Adding EN signal on $memory\memory[28]$1219 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[28]).
+Adding EN signal on $memory\memory[27]$1217 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[27]).
+Adding EN signal on $memory\memory[26]$1215 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[26]).
+Adding EN signal on $memory\memory[25]$1213 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[25]).
+Adding EN signal on $memory\memory[255]$1673 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[255]).
+Adding EN signal on $memory\memory[254]$1671 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[254]).
+Adding EN signal on $memory\memory[253]$1669 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[253]).
+Adding EN signal on $memory\memory[252]$1667 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[252]).
+Adding EN signal on $memory\memory[251]$1665 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[251]).
+Adding EN signal on $memory\memory[250]$1663 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[250]).
+Adding EN signal on $memory\memory[24]$1211 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[24]).
+Adding EN signal on $memory\memory[249]$1661 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[249]).
+Adding EN signal on $memory\memory[248]$1659 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[248]).
+Adding EN signal on $memory\memory[247]$1657 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[247]).
+Adding EN signal on $memory\memory[246]$1655 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[246]).
+Adding EN signal on $memory\memory[245]$1653 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[245]).
+Adding EN signal on $memory\memory[244]$1651 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[244]).
+Adding EN signal on $memory\memory[243]$1649 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[243]).
+Adding EN signal on $memory\memory[242]$1647 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[242]).
+Adding EN signal on $memory\memory[241]$1645 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[241]).
+Adding EN signal on $memory\memory[240]$1643 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[240]).
+Adding EN signal on $memory\memory[23]$1209 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[23]).
+Adding EN signal on $memory\memory[239]$1641 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[239]).
+Adding EN signal on $memory\memory[238]$1639 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[238]).
+Adding EN signal on $memory\memory[237]$1637 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[237]).
+Adding EN signal on $memory\memory[236]$1635 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[236]).
+Adding EN signal on $memory\memory[235]$1633 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[235]).
+Adding EN signal on $memory\memory[234]$1631 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[234]).
+Adding EN signal on $memory\memory[233]$1629 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[233]).
+Adding EN signal on $memory\memory[232]$1627 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[232]).
+Adding EN signal on $memory\memory[231]$1625 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[231]).
+Adding EN signal on $memory\memory[230]$1623 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[230]).
+Adding EN signal on $memory\memory[22]$1207 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[22]).
+Adding EN signal on $memory\memory[229]$1621 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[229]).
+Adding EN signal on $memory\memory[228]$1619 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[228]).
+Adding EN signal on $memory\memory[227]$1617 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[227]).
+Adding EN signal on $memory\memory[226]$1615 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[226]).
+Adding EN signal on $memory\memory[225]$1613 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[225]).
+Adding EN signal on $memory\memory[224]$1611 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[224]).
+Adding EN signal on $memory\memory[223]$1609 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[223]).
+Adding EN signal on $memory\memory[222]$1607 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[222]).
+Adding EN signal on $memory\memory[221]$1605 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[221]).
+Adding EN signal on $memory\memory[220]$1603 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[220]).
+Adding EN signal on $memory\memory[21]$1205 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[21]).
+Adding EN signal on $memory\memory[219]$1601 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[219]).
+Adding EN signal on $memory\memory[218]$1599 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[218]).
+Adding EN signal on $memory\memory[217]$1597 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[217]).
+Adding EN signal on $memory\memory[216]$1595 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[216]).
+Adding EN signal on $memory\memory[215]$1593 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[215]).
+Adding EN signal on $memory\memory[214]$1591 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[214]).
+Adding EN signal on $memory\memory[213]$1589 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[213]).
+Adding EN signal on $memory\memory[212]$1587 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[212]).
+Adding EN signal on $memory\memory[211]$1585 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[211]).
+Adding EN signal on $memory\memory[210]$1583 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[210]).
+Adding EN signal on $memory\memory[20]$1203 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[20]).
+Adding EN signal on $memory\memory[209]$1581 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[209]).
+Adding EN signal on $memory\memory[208]$1579 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[208]).
+Adding EN signal on $memory\memory[207]$1577 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[207]).
+Adding EN signal on $memory\memory[206]$1575 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[206]).
+Adding EN signal on $memory\memory[205]$1573 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[205]).
+Adding EN signal on $memory\memory[204]$1571 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[204]).
+Adding EN signal on $memory\memory[203]$1569 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[203]).
+Adding EN signal on $memory\memory[202]$1567 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[202]).
+Adding EN signal on $memory\memory[201]$1565 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[201]).
+Adding EN signal on $memory\memory[200]$1563 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[200]).
+Adding EN signal on $memory\memory[1]$1165 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[1]).
+Adding EN signal on $memory\memory[19]$1201 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[19]).
+Adding EN signal on $memory\memory[199]$1561 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[199]).
+Adding EN signal on $memory\memory[198]$1559 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[198]).
+Adding EN signal on $memory\memory[197]$1557 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[197]).
+Adding EN signal on $memory\memory[196]$1555 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[196]).
+Adding EN signal on $memory\memory[195]$1553 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[195]).
+Adding EN signal on $memory\memory[194]$1551 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[194]).
+Adding EN signal on $memory\memory[193]$1549 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[193]).
+Adding EN signal on $memory\memory[192]$1547 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[192]).
+Adding EN signal on $memory\memory[191]$1545 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[191]).
+Adding EN signal on $memory\memory[190]$1543 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[190]).
+Adding EN signal on $memory\memory[18]$1199 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[18]).
+Adding EN signal on $memory\memory[189]$1541 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[189]).
+Adding EN signal on $memory\memory[188]$1539 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[188]).
+Adding EN signal on $memory\memory[187]$1537 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[187]).
+Adding EN signal on $memory\memory[186]$1535 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[186]).
+Adding EN signal on $memory\memory[185]$1533 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[185]).
+Adding EN signal on $memory\memory[184]$1531 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[184]).
+Adding EN signal on $memory\memory[183]$1529 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[183]).
+Adding EN signal on $memory\memory[182]$1527 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[182]).
+Adding EN signal on $memory\memory[181]$1525 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[181]).
+Adding EN signal on $memory\memory[180]$1523 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[180]).
+Adding EN signal on $memory\memory[17]$1197 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[17]).
+Adding EN signal on $memory\memory[179]$1521 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[179]).
+Adding EN signal on $memory\memory[178]$1519 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[178]).
+Adding EN signal on $memory\memory[177]$1517 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[177]).
+Adding EN signal on $memory\memory[176]$1515 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[176]).
+Adding EN signal on $memory\memory[175]$1513 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[175]).
+Adding EN signal on $memory\memory[174]$1511 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[174]).
+Adding EN signal on $memory\memory[173]$1509 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[173]).
+Adding EN signal on $memory\memory[172]$1507 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[172]).
+Adding EN signal on $memory\memory[171]$1505 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[171]).
+Adding EN signal on $memory\memory[170]$1503 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[170]).
+Adding EN signal on $memory\memory[16]$1195 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[16]).
+Adding EN signal on $memory\memory[169]$1501 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[169]).
+Adding EN signal on $memory\memory[168]$1499 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[168]).
+Adding EN signal on $memory\memory[167]$1497 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[167]).
+Adding EN signal on $memory\memory[166]$1495 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[166]).
+Adding EN signal on $memory\memory[165]$1493 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[165]).
+Adding EN signal on $memory\memory[164]$1491 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[164]).
+Adding EN signal on $memory\memory[163]$1489 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[163]).
+Adding EN signal on $memory\memory[162]$1487 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[162]).
+Adding EN signal on $memory\memory[161]$1485 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[161]).
+Adding EN signal on $memory\memory[160]$1483 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[160]).
+Adding EN signal on $memory\memory[15]$1193 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[15]).
+Adding EN signal on $memory\memory[159]$1481 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[159]).
+Adding EN signal on $memory\memory[158]$1479 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[158]).
+Adding EN signal on $memory\memory[157]$1477 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[157]).
+Adding EN signal on $memory\memory[156]$1475 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[156]).
+Adding EN signal on $memory\memory[155]$1473 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[155]).
+Adding EN signal on $memory\memory[154]$1471 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[154]).
+Adding EN signal on $memory\memory[153]$1469 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[153]).
+Adding EN signal on $memory\memory[152]$1467 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[152]).
+Adding EN signal on $memory\memory[151]$1465 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[151]).
+Adding EN signal on $memory\memory[150]$1463 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[150]).
+Adding EN signal on $memory\memory[14]$1191 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[14]).
+Adding EN signal on $memory\memory[149]$1461 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[149]).
+Adding EN signal on $memory\memory[148]$1459 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[148]).
+Adding EN signal on $memory\memory[147]$1457 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[147]).
+Adding EN signal on $memory\memory[146]$1455 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[146]).
+Adding EN signal on $memory\memory[145]$1453 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[145]).
+Adding EN signal on $memory\memory[144]$1451 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[144]).
+Adding EN signal on $memory\memory[143]$1449 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[143]).
+Adding EN signal on $memory\memory[142]$1447 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[142]).
+Adding EN signal on $memory\memory[141]$1445 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[141]).
+Adding EN signal on $memory\memory[140]$1443 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[140]).
+Adding EN signal on $memory\memory[13]$1189 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[13]).
+Adding EN signal on $memory\memory[139]$1441 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[139]).
+Adding EN signal on $memory\memory[138]$1439 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[138]).
+Adding EN signal on $memory\memory[137]$1437 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[137]).
+Adding EN signal on $memory\memory[136]$1435 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[136]).
+Adding EN signal on $memory\memory[135]$1433 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[135]).
+Adding EN signal on $memory\memory[134]$1431 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[134]).
+Adding EN signal on $memory\memory[133]$1429 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[133]).
+Adding EN signal on $memory\memory[132]$1427 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[132]).
+Adding EN signal on $memory\memory[131]$1425 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[131]).
+Adding EN signal on $memory\memory[130]$1423 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[130]).
+Adding EN signal on $memory\memory[12]$1187 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[12]).
+Adding EN signal on $memory\memory[129]$1421 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[129]).
+Adding EN signal on $memory\memory[128]$1419 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[128]).
+Adding EN signal on $memory\memory[127]$1417 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[127]).
+Adding EN signal on $memory\memory[126]$1415 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[126]).
+Adding EN signal on $memory\memory[125]$1413 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[125]).
+Adding EN signal on $memory\memory[124]$1411 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[124]).
+Adding EN signal on $memory\memory[123]$1409 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[123]).
+Adding EN signal on $memory\memory[122]$1407 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[122]).
+Adding EN signal on $memory\memory[121]$1405 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[121]).
+Adding EN signal on $memory\memory[120]$1403 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[120]).
+Adding EN signal on $memory\memory[11]$1185 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[11]).
+Adding EN signal on $memory\memory[119]$1401 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[119]).
+Adding EN signal on $memory\memory[118]$1399 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[118]).
+Adding EN signal on $memory\memory[117]$1397 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[117]).
+Adding EN signal on $memory\memory[116]$1395 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[116]).
+Adding EN signal on $memory\memory[115]$1393 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[115]).
+Adding EN signal on $memory\memory[114]$1391 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[114]).
+Adding EN signal on $memory\memory[113]$1389 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[113]).
+Adding EN signal on $memory\memory[112]$1387 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[112]).
+Adding EN signal on $memory\memory[111]$1385 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[111]).
+Adding EN signal on $memory\memory[110]$1383 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[110]).
+Adding EN signal on $memory\memory[10]$1183 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[10]).
+Adding EN signal on $memory\memory[109]$1381 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[109]).
+Adding EN signal on $memory\memory[108]$1379 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[108]).
+Adding EN signal on $memory\memory[107]$1377 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[107]).
+Adding EN signal on $memory\memory[106]$1375 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[106]).
+Adding EN signal on $memory\memory[105]$1373 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[105]).
+Adding EN signal on $memory\memory[104]$1371 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[104]).
+Adding EN signal on $memory\memory[103]$1369 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[103]).
+Adding EN signal on $memory\memory[102]$1367 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[102]).
+Adding EN signal on $memory\memory[101]$1365 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[101]).
+Adding EN signal on $memory\memory[100]$1363 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[100]).
+Adding EN signal on $memory\memory[0]$1163 ($dff) from module data_memory (D = $0$memwr$\memory$rtl/data_memory.v:27$95_DATA[31:0]$98, Q = \memory[0]).
+
+19.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \alu..
+Finding unused cells or wires in module \alu_control..
+Finding unused cells or wires in module \branch_unit..
+Finding unused cells or wires in module \control_unit..
+Finding unused cells or wires in module \data_memory..
+Finding unused cells or wires in module \immediate_generator..
+Finding unused cells or wires in module \instruction_decoder..
+Finding unused cells or wires in module \instruction_memory..
+Finding unused cells or wires in module \program_counter..
+Finding unused cells or wires in module \register_file..
+Finding unused cells or wires in module \riscv_cpu..
+Finding unused cells or wires in module \top..
+Removed 256 unused cells and 256 unused wires.
+<suppressed ~257 debug messages>
+
+19.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module alu.
+Optimizing module alu_control.
+Optimizing module branch_unit.
+Optimizing module control_unit.
+Optimizing module data_memory.
+Optimizing module immediate_generator.
+Optimizing module instruction_decoder.
+Optimizing module instruction_memory.
+Optimizing module program_counter.
+Optimizing module register_file.
+Optimizing module riscv_cpu.
+Optimizing module top.
+
+19.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+19.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \alu..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \alu_control..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \branch_unit..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \control_unit..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \data_memory..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \immediate_generator..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \instruction_decoder..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \instruction_memory..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \program_counter..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \register_file..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \riscv_cpu..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \top..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+<suppressed ~20 debug messages>
+
+19.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \alu.
+  Optimizing cells in module \alu_control.
+  Optimizing cells in module \branch_unit.
+  Optimizing cells in module \control_unit.
+  Optimizing cells in module \data_memory.
+  Optimizing cells in module \immediate_generator.
+  Optimizing cells in module \instruction_decoder.
+  Optimizing cells in module \instruction_memory.
+  Optimizing cells in module \program_counter.
+  Optimizing cells in module \register_file.
+  Optimizing cells in module \riscv_cpu.
+  Optimizing cells in module \top.
+Performed a total of 0 changes.
+
+19.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\alu'.
+Finding identical cells in module `\alu_control'.
+Finding identical cells in module `\branch_unit'.
+Finding identical cells in module `\control_unit'.
+Finding identical cells in module `\data_memory'.
+Finding identical cells in module `\immediate_generator'.
+Finding identical cells in module `\instruction_decoder'.
+Finding identical cells in module `\instruction_memory'.
+Finding identical cells in module `\program_counter'.
+Finding identical cells in module `\register_file'.
+Finding identical cells in module `\riscv_cpu'.
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+19.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+19.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \alu..
+Finding unused cells or wires in module \alu_control..
+Finding unused cells or wires in module \branch_unit..
+Finding unused cells or wires in module \control_unit..
+Finding unused cells or wires in module \data_memory..
+Finding unused cells or wires in module \immediate_generator..
+Finding unused cells or wires in module \instruction_decoder..
+Finding unused cells or wires in module \instruction_memory..
+Finding unused cells or wires in module \program_counter..
+Finding unused cells or wires in module \register_file..
+Finding unused cells or wires in module \riscv_cpu..
+Finding unused cells or wires in module \top..
+
+19.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module alu.
+Optimizing module alu_control.
+Optimizing module branch_unit.
+Optimizing module control_unit.
+Optimizing module data_memory.
+Optimizing module immediate_generator.
+Optimizing module instruction_decoder.
+Optimizing module instruction_memory.
+Optimizing module program_counter.
+Optimizing module register_file.
+Optimizing module riscv_cpu.
+Optimizing module top.
+
+19.23. Finished OPT passes. (There is nothing left to do.)
+
+20. Executing TECHMAP pass (map to technology primitives).
+
+20.1. Executing Verilog-2005 frontend: /usr/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/usr/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Successfully finished Verilog frontend.
+
+20.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $mux.
+Using extmapper simplemap for cells of type $eq.
+Running "alumacc" on wrapper $extern:wrap:$add:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$add:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$add:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Using extmapper simplemap for cells of type $logic_and.
+Using template $paramod$fbc7873bff55778c0b3173955b7e4bce1d9d6834\_90_alu for cells of type $alu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000100000 for cells of type $lcu.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $xor.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $pos.
+Using extmapper simplemap for cells of type $or.
+Using extmapper simplemap for cells of type $reduce_and.
+Using extmapper simplemap for cells of type $reduce_bool.
+Using extmapper simplemap for cells of type $adffe.
+Using template $paramod$c83925f608704c3fa34790ddcfce9302bdcd7533\_90_pmux for cells of type $pmux.
+Using extmapper simplemap for cells of type $logic_not.
+Using extmapper simplemap for cells of type $reduce_or.
+Using extmapper simplemap for cells of type $adff.
+Using template $paramod$59b03ae2620a41577de8da5f5c97b2919e82362b\_90_pmux for cells of type $pmux.
+Using extmapper simplemap for cells of type $dffe.
+Using extmapper simplemap for cells of type $ne.
+Using template $paramod$c5c783b17ab1d780abfad8cfe6563a0a7b47a3b0\_90_pmux for cells of type $pmux.
+Using template $paramod$bf2533632d512eac76dd186c0da49367e29b8e98\_90_pmux for cells of type $pmux.
+Using template $paramod$95ab7b964273918a033d1324366ecc612d202989\_90_pmux for cells of type $pmux.
+Using template $paramod$c2e415ef15bc3ccd2723772353a6b450d3d76206\_90_pmux for cells of type $pmux.
+Running "alumacc" on wrapper $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$lt:A_SIGNED=1:A_WIDTH=32:B_SIGNED=1:B_WIDTH=32:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$lt:A_SIGNED=1:A_WIDTH=32:B_SIGNED=1:B_WIDTH=32:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$lt:A_SIGNED=1:A_WIDTH=32:B_SIGNED=1:B_WIDTH=32:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $paramod$c96def1cdcef2eee3c62e5dfb7ba2dd09c9f74dd\_90_pmux for cells of type $pmux.
+Using template $paramod$2653f68ddb8eab7b1907b4a20767b72a824a7a36\_90_alu for cells of type $alu.
+No more expansions possible.
+<suppressed ~2730 debug messages>
+
+21. Executing OPT pass (performing simple optimizations).
+
+21.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module alu.
+<suppressed ~251 debug messages>
+Optimizing module alu_control.
+<suppressed ~105 debug messages>
+Optimizing module branch_unit.
+<suppressed ~5 debug messages>
+Optimizing module control_unit.
+<suppressed ~62 debug messages>
+Optimizing module data_memory.
+<suppressed ~1 debug messages>
+Optimizing module immediate_generator.
+<suppressed ~77 debug messages>
+Optimizing module instruction_decoder.
+Optimizing module instruction_memory.
+<suppressed ~147 debug messages>
+Optimizing module program_counter.
+Optimizing module register_file.
+<suppressed ~529 debug messages>
+Optimizing module riscv_cpu.
+<suppressed ~301 debug messages>
+Optimizing module top.
+
+21.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\alu'.
+<suppressed ~399 debug messages>
+Finding identical cells in module `\alu_control'.
+<suppressed ~69 debug messages>
+Finding identical cells in module `\branch_unit'.
+<suppressed ~192 debug messages>
+Finding identical cells in module `\control_unit'.
+<suppressed ~159 debug messages>
+Finding identical cells in module `\data_memory'.
+Finding identical cells in module `\immediate_generator'.
+<suppressed ~384 debug messages>
+Finding identical cells in module `\instruction_decoder'.
+Finding identical cells in module `\instruction_memory'.
+<suppressed ~486 debug messages>
+Finding identical cells in module `\program_counter'.
+Finding identical cells in module `\register_file'.
+<suppressed ~1323 debug messages>
+Finding identical cells in module `\riscv_cpu'.
+<suppressed ~120 debug messages>
+Finding identical cells in module `\top'.
+Removed a total of 1044 cells.
+
+21.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \alu..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \alu_control..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \branch_unit..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \control_unit..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \data_memory..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \immediate_generator..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \instruction_decoder..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \instruction_memory..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \program_counter..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \register_file..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \riscv_cpu..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \top..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+21.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \alu.
+  Optimizing cells in module \alu_control.
+  Optimizing cells in module \branch_unit.
+  Optimizing cells in module \control_unit.
+  Optimizing cells in module \data_memory.
+  Optimizing cells in module \immediate_generator.
+  Optimizing cells in module \instruction_decoder.
+  Optimizing cells in module \instruction_memory.
+  Optimizing cells in module \program_counter.
+  Optimizing cells in module \register_file.
+  Optimizing cells in module \riscv_cpu.
+  Optimizing cells in module \top.
+Performed a total of 0 changes.
+
+21.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\alu'.
+Finding identical cells in module `\alu_control'.
+Finding identical cells in module `\branch_unit'.
+Finding identical cells in module `\control_unit'.
+Finding identical cells in module `\data_memory'.
+Finding identical cells in module `\immediate_generator'.
+Finding identical cells in module `\instruction_decoder'.
+Finding identical cells in module `\instruction_memory'.
+Finding identical cells in module `\program_counter'.
+Finding identical cells in module `\register_file'.
+Finding identical cells in module `\riscv_cpu'.
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+21.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+21.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \alu..
+Finding unused cells or wires in module \alu_control..
+Finding unused cells or wires in module \branch_unit..
+Finding unused cells or wires in module \control_unit..
+Finding unused cells or wires in module \data_memory..
+Finding unused cells or wires in module \immediate_generator..
+Finding unused cells or wires in module \instruction_decoder..
+Finding unused cells or wires in module \instruction_memory..
+Finding unused cells or wires in module \program_counter..
+Finding unused cells or wires in module \register_file..
+Finding unused cells or wires in module \riscv_cpu..
+Finding unused cells or wires in module \top..
+Removed 160 unused cells and 1711 unused wires.
+<suppressed ~169 debug messages>
+
+21.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module alu.
+Optimizing module alu_control.
+Optimizing module branch_unit.
+Optimizing module control_unit.
+Optimizing module data_memory.
+Optimizing module immediate_generator.
+Optimizing module instruction_decoder.
+Optimizing module instruction_memory.
+<suppressed ~6 debug messages>
+Optimizing module program_counter.
+Optimizing module register_file.
+Optimizing module riscv_cpu.
+Optimizing module top.
+
+21.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+21.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \alu..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \alu_control..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \branch_unit..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \control_unit..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \data_memory..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \immediate_generator..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \instruction_decoder..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \instruction_memory..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \program_counter..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \register_file..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \riscv_cpu..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \top..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+21.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \alu.
+  Optimizing cells in module \alu_control.
+  Optimizing cells in module \branch_unit.
+  Optimizing cells in module \control_unit.
+  Optimizing cells in module \data_memory.
+  Optimizing cells in module \immediate_generator.
+  Optimizing cells in module \instruction_decoder.
+  Optimizing cells in module \instruction_memory.
+  Optimizing cells in module \program_counter.
+  Optimizing cells in module \register_file.
+  Optimizing cells in module \riscv_cpu.
+  Optimizing cells in module \top.
+Performed a total of 0 changes.
+
+21.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\alu'.
+Finding identical cells in module `\alu_control'.
+Finding identical cells in module `\branch_unit'.
+Finding identical cells in module `\control_unit'.
+Finding identical cells in module `\data_memory'.
+Finding identical cells in module `\immediate_generator'.
+Finding identical cells in module `\instruction_decoder'.
+Finding identical cells in module `\instruction_memory'.
+Finding identical cells in module `\program_counter'.
+Finding identical cells in module `\register_file'.
+Finding identical cells in module `\riscv_cpu'.
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+21.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+21.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \alu..
+Finding unused cells or wires in module \alu_control..
+Finding unused cells or wires in module \branch_unit..
+Finding unused cells or wires in module \control_unit..
+Finding unused cells or wires in module \data_memory..
+Finding unused cells or wires in module \immediate_generator..
+Finding unused cells or wires in module \instruction_decoder..
+Finding unused cells or wires in module \instruction_memory..
+Finding unused cells or wires in module \program_counter..
+Finding unused cells or wires in module \register_file..
+Finding unused cells or wires in module \riscv_cpu..
+Finding unused cells or wires in module \top..
+Removed 0 unused cells and 1 unused wires.
+<suppressed ~1 debug messages>
+
+21.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module alu.
+Optimizing module alu_control.
+Optimizing module branch_unit.
+Optimizing module control_unit.
+Optimizing module data_memory.
+Optimizing module immediate_generator.
+Optimizing module instruction_decoder.
+Optimizing module instruction_memory.
+Optimizing module program_counter.
+Optimizing module register_file.
+Optimizing module riscv_cpu.
+Optimizing module top.
+
+21.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+21.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \alu..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \alu_control..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \branch_unit..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \control_unit..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \data_memory..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \immediate_generator..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \instruction_decoder..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \instruction_memory..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \program_counter..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \register_file..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \riscv_cpu..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \top..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+21.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \alu.
+  Optimizing cells in module \alu_control.
+  Optimizing cells in module \branch_unit.
+  Optimizing cells in module \control_unit.
+  Optimizing cells in module \data_memory.
+  Optimizing cells in module \immediate_generator.
+  Optimizing cells in module \instruction_decoder.
+  Optimizing cells in module \instruction_memory.
+  Optimizing cells in module \program_counter.
+  Optimizing cells in module \register_file.
+  Optimizing cells in module \riscv_cpu.
+  Optimizing cells in module \top.
+Performed a total of 0 changes.
+
+21.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\alu'.
+Finding identical cells in module `\alu_control'.
+Finding identical cells in module `\branch_unit'.
+Finding identical cells in module `\control_unit'.
+Finding identical cells in module `\data_memory'.
+Finding identical cells in module `\immediate_generator'.
+Finding identical cells in module `\instruction_decoder'.
+Finding identical cells in module `\instruction_memory'.
+Finding identical cells in module `\program_counter'.
+Finding identical cells in module `\register_file'.
+Finding identical cells in module `\riscv_cpu'.
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+21.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+21.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \alu..
+Finding unused cells or wires in module \alu_control..
+Finding unused cells or wires in module \branch_unit..
+Finding unused cells or wires in module \control_unit..
+Finding unused cells or wires in module \data_memory..
+Finding unused cells or wires in module \immediate_generator..
+Finding unused cells or wires in module \instruction_decoder..
+Finding unused cells or wires in module \instruction_memory..
+Finding unused cells or wires in module \program_counter..
+Finding unused cells or wires in module \register_file..
+Finding unused cells or wires in module \riscv_cpu..
+Finding unused cells or wires in module \top..
+
+21.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module alu.
+Optimizing module alu_control.
+Optimizing module branch_unit.
+Optimizing module control_unit.
+Optimizing module data_memory.
+Optimizing module immediate_generator.
+Optimizing module instruction_decoder.
+Optimizing module instruction_memory.
+Optimizing module program_counter.
+Optimizing module register_file.
+Optimizing module riscv_cpu.
+Optimizing module top.
+
+21.23. Finished OPT passes. (There is nothing left to do.)
+
+22. Executing FLATTEN pass (flatten design).
+Deleting now unused module alu.
+Deleting now unused module alu_control.
+Deleting now unused module branch_unit.
+Deleting now unused module control_unit.
+Deleting now unused module data_memory.
+Deleting now unused module immediate_generator.
+Deleting now unused module instruction_decoder.
+Deleting now unused module instruction_memory.
+Deleting now unused module program_counter.
+Deleting now unused module register_file.
+Deleting now unused module riscv_cpu.
+<suppressed ~11 debug messages>
+
+23. Executing OPT pass (performing simple optimizations).
+
+23.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+<suppressed ~2944 debug messages>
+
+23.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+<suppressed ~1641 debug messages>
+Removed a total of 547 cells.
+
+23.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \top..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+23.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \top.
+Performed a total of 0 changes.
+
+23.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+23.6. Executing OPT_DFF pass (perform DFF optimizations).
+Handling never-active EN on $flatten\cpu.\registers.$auto$ff.cc:266:slice$8734 ($_DFFE_PP0P_) from module top (removing D path).
+Handling never-active EN on $flatten\cpu.\registers.$auto$ff.cc:266:slice$6364 ($_DFFE_PP0P_) from module top (removing D path).
+Handling never-active EN on $flatten\cpu.\registers.$auto$ff.cc:266:slice$8803 ($_DFFE_PP0P_) from module top (removing D path).
+Handling never-active EN on $flatten\cpu.\registers.$auto$ff.cc:266:slice$8730 ($_DFFE_PP0P_) from module top (removing D path).
+Handling never-active EN on $flatten\cpu.\registers.$auto$ff.cc:266:slice$6363 ($_DFFE_PP0P_) from module top (removing D path).
+Handling never-active EN on $flatten\cpu.\registers.$auto$ff.cc:266:slice$8796 ($_DFFE_PP0P_) from module top (removing D path).
+Handling never-active EN on $flatten\cpu.\registers.$auto$ff.cc:266:slice$6379 ($_DFFE_PP0P_) from module top (removing D path).
+Handling never-active EN on $flatten\cpu.\registers.$auto$ff.cc:266:slice$8774 ($_DFFE_PP0P_) from module top (removing D path).
+Handling never-active EN on $flatten\cpu.\registers.$auto$ff.cc:266:slice$8765 ($_DFFE_PP0P_) from module top (removing D path).
+Handling never-active EN on $flatten\cpu.\registers.$auto$ff.cc:266:slice$8800 ($_DFFE_PP0P_) from module top (removing D path).
+Handling never-active EN on $flatten\cpu.\registers.$auto$ff.cc:266:slice$6371 ($_DFFE_PP0P_) from module top (removing D path).
+Handling never-active EN on $flatten\cpu.\registers.$auto$ff.cc:266:slice$8856 ($_DFFE_PP0P_) from module top (removing D path).
+Handling never-active EN on $flatten\cpu.\registers.$auto$ff.cc:266:slice$8687 ($_DFFE_PP0P_) from module top (removing D path).
+Handling never-active EN on $flatten\cpu.\registers.$auto$ff.cc:266:slice$6380 ($_DFFE_PP0P_) from module top (removing D path).
+Handling never-active EN on $flatten\cpu.\registers.$auto$ff.cc:266:slice$8912 ($_DFFE_PP0P_) from module top (removing D path).
+Handling never-active EN on $flatten\cpu.\registers.$auto$ff.cc:266:slice$8723 ($_DFFE_PP0P_) from module top (removing D path).
+Handling never-active EN on $flatten\cpu.\registers.$auto$ff.cc:266:slice$8875 ($_DFFE_PP0P_) from module top (removing D path).
+Handling never-active EN on $flatten\cpu.\registers.$auto$ff.cc:266:slice$8711 ($_DFFE_PP0P_) from module top (removing D path).
+Handling never-active EN on $flatten\cpu.\registers.$auto$ff.cc:266:slice$8681 ($_DFFE_PP0P_) from module top (removing D path).
+Handling never-active EN on $flatten\cpu.\registers.$auto$ff.cc:266:slice$8814 ($_DFFE_PP0P_) from module top (removing D path).
+Handling never-active EN on $flatten\cpu.\registers.$auto$ff.cc:266:slice$9058 ($_DFFE_PP0P_) from module top (removing D path).
+Handling never-active EN on $flatten\cpu.\registers.$auto$ff.cc:266:slice$8799 ($_DFFE_PP0P_) from module top (removing D path).
+Handling never-active EN on $flatten\cpu.\registers.$auto$ff.cc:266:slice$8909 ($_DFFE_PP0P_) from module top (removing D path).
+Handling never-active EN on $flatten\cpu.\registers.$auto$ff.cc:266:slice$8886 ($_DFFE_PP0P_) from module top (removing D path).
+Handling never-active EN on $flatten\cpu.\registers.$auto$ff.cc:266:slice$8818 ($_DFFE_PP0P_) from module top (removing D path).
+Handling never-active EN on $flatten\cpu.\registers.$auto$ff.cc:266:slice$9032 ($_DFFE_PP0P_) from module top (removing D path).
+Handling never-active EN on $flatten\cpu.\registers.$auto$ff.cc:266:slice$8778 ($_DFFE_PP0P_) from module top (removing D path).
+Handling never-active EN on $flatten\cpu.\registers.$auto$ff.cc:266:slice$9051 ($_DFFE_PP0P_) from module top (removing D path).
+Handling never-active EN on $flatten\cpu.\registers.$auto$ff.cc:266:slice$9017 ($_DFFE_PP0P_) from module top (removing D path).
+Handling never-active EN on $flatten\cpu.\registers.$auto$ff.cc:266:slice$9009 ($_DFFE_PP0P_) from module top (removing D path).
+Handling never-active EN on $flatten\cpu.\registers.$auto$ff.cc:266:slice$8897 ($_DFFE_PP0P_) from module top (removing D path).
+Handling never-active EN on $flatten\cpu.\registers.$auto$ff.cc:266:slice$8983 ($_DFFE_PP0P_) from module top (removing D path).
+Setting constant 0-bit at position 0 on $flatten\cpu.\registers.$auto$ff.cc:266:slice$8983 ($_DLATCH_P_) from module top.
+Setting constant 0-bit at position 0 on $flatten\cpu.\registers.$auto$ff.cc:266:slice$8897 ($_DLATCH_P_) from module top.
+Setting constant 0-bit at position 0 on $flatten\cpu.\registers.$auto$ff.cc:266:slice$9009 ($_DLATCH_P_) from module top.
+Setting constant 0-bit at position 0 on $flatten\cpu.\registers.$auto$ff.cc:266:slice$9017 ($_DLATCH_P_) from module top.
+Setting constant 0-bit at position 0 on $flatten\cpu.\registers.$auto$ff.cc:266:slice$9051 ($_DLATCH_P_) from module top.
+Setting constant 0-bit at position 0 on $flatten\cpu.\registers.$auto$ff.cc:266:slice$8778 ($_DLATCH_P_) from module top.
+Setting constant 0-bit at position 0 on $flatten\cpu.\registers.$auto$ff.cc:266:slice$9032 ($_DLATCH_P_) from module top.
+Setting constant 0-bit at position 0 on $flatten\cpu.\registers.$auto$ff.cc:266:slice$8818 ($_DLATCH_P_) from module top.
+Setting constant 0-bit at position 0 on $flatten\cpu.\registers.$auto$ff.cc:266:slice$8886 ($_DLATCH_P_) from module top.
+Setting constant 0-bit at position 0 on $flatten\cpu.\registers.$auto$ff.cc:266:slice$8909 ($_DLATCH_P_) from module top.
+Setting constant 0-bit at position 0 on $flatten\cpu.\registers.$auto$ff.cc:266:slice$8799 ($_DLATCH_P_) from module top.
+Setting constant 0-bit at position 0 on $flatten\cpu.\registers.$auto$ff.cc:266:slice$9058 ($_DLATCH_P_) from module top.
+Setting constant 0-bit at position 0 on $flatten\cpu.\registers.$auto$ff.cc:266:slice$8814 ($_DLATCH_P_) from module top.
+Setting constant 0-bit at position 0 on $flatten\cpu.\registers.$auto$ff.cc:266:slice$8681 ($_DLATCH_P_) from module top.
+Setting constant 0-bit at position 0 on $flatten\cpu.\registers.$auto$ff.cc:266:slice$8711 ($_DLATCH_P_) from module top.
+Setting constant 0-bit at position 0 on $flatten\cpu.\registers.$auto$ff.cc:266:slice$8875 ($_DLATCH_P_) from module top.
+Setting constant 0-bit at position 0 on $flatten\cpu.\registers.$auto$ff.cc:266:slice$8723 ($_DLATCH_P_) from module top.
+Setting constant 0-bit at position 0 on $flatten\cpu.\registers.$auto$ff.cc:266:slice$8912 ($_DLATCH_P_) from module top.
+Setting constant 0-bit at position 0 on $flatten\cpu.\registers.$auto$ff.cc:266:slice$6380 ($_DLATCH_P_) from module top.
+Setting constant 0-bit at position 0 on $flatten\cpu.\registers.$auto$ff.cc:266:slice$8687 ($_DLATCH_P_) from module top.
+Setting constant 0-bit at position 0 on $flatten\cpu.\registers.$auto$ff.cc:266:slice$8856 ($_DLATCH_P_) from module top.
+Setting constant 0-bit at position 0 on $flatten\cpu.\registers.$auto$ff.cc:266:slice$6371 ($_DLATCH_P_) from module top.
+Setting constant 0-bit at position 0 on $flatten\cpu.\registers.$auto$ff.cc:266:slice$8800 ($_DLATCH_P_) from module top.
+Setting constant 0-bit at position 0 on $flatten\cpu.\registers.$auto$ff.cc:266:slice$8765 ($_DLATCH_P_) from module top.
+Setting constant 0-bit at position 0 on $flatten\cpu.\registers.$auto$ff.cc:266:slice$8774 ($_DLATCH_P_) from module top.
+Setting constant 0-bit at position 0 on $flatten\cpu.\registers.$auto$ff.cc:266:slice$6379 ($_DLATCH_P_) from module top.
+Setting constant 0-bit at position 0 on $flatten\cpu.\registers.$auto$ff.cc:266:slice$8796 ($_DLATCH_P_) from module top.
+Setting constant 0-bit at position 0 on $flatten\cpu.\registers.$auto$ff.cc:266:slice$6363 ($_DLATCH_P_) from module top.
+Setting constant 0-bit at position 0 on $flatten\cpu.\registers.$auto$ff.cc:266:slice$8730 ($_DLATCH_P_) from module top.
+Setting constant 0-bit at position 0 on $flatten\cpu.\registers.$auto$ff.cc:266:slice$8803 ($_DLATCH_P_) from module top.
+Setting constant 0-bit at position 0 on $flatten\cpu.\registers.$auto$ff.cc:266:slice$6364 ($_DLATCH_P_) from module top.
+Setting constant 0-bit at position 0 on $flatten\cpu.\registers.$auto$ff.cc:266:slice$8734 ($_DLATCH_P_) from module top.
+
+23.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+Removed 269 unused cells and 630 unused wires.
+<suppressed ~272 debug messages>
+
+23.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+<suppressed ~1059 debug messages>
+
+23.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+23.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \top..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+23.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \top.
+Performed a total of 0 changes.
+
+23.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+23.13. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $flatten\cpu.\pc_unit.$auto$ff.cc:266:slice$13499 ($_DFF_PP0_) from module top (D = \cpu.next_pc [1], Q = \cpu.pc_unit.pc [1]).
+Adding EN signal on $flatten\cpu.\pc_unit.$auto$ff.cc:266:slice$13498 ($_DFF_PP0_) from module top (D = \cpu.next_pc [0], Q = \cpu.pc_unit.pc [0]).
+
+23.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+Removed 1 unused cells and 38 unused wires.
+<suppressed ~2 debug messages>
+
+23.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+<suppressed ~4 debug messages>
+
+23.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+23.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \top..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+23.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \top.
+Performed a total of 0 changes.
+
+23.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+<suppressed ~9 debug messages>
+Removed a total of 3 cells.
+
+23.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+23.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+Removed 0 unused cells and 5 unused wires.
+<suppressed ~1 debug messages>
+
+23.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+
+23.23. Rerunning OPT passes. (Maybe there is more to do..)
+
+23.24. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \top..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+23.25. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \top.
+Performed a total of 0 changes.
+
+23.26. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+23.27. Executing OPT_DFF pass (perform DFF optimizations).
+
+23.28. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+
+23.29. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+
+23.30. Finished OPT passes. (There is nothing left to do.)
+
+24. Executing Verilog backend.
+
+24.1. Executing BMUXMAP pass.
+
+24.2. Executing DEMUXMAP pass.
+Dumping module `\top'.
+
+25. Printing statistics.
+
+=== top ===
+
+   Number of wires:               1755
+   Number of wire bits:          23922
+   Number of public wires:         374
+   Number of public wire bits:   10426
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:              19990
+     $_AND_                       1505
+     $_DFFE_PP0P_                  482
+     $_DFFE_PP_                   8192
+     $_DFF_PP0_                     30
+     $_MUX_                       8652
+     $_NOT_                        110
+     $_OR_                         790
+     $_XOR_                        229
+
+Warnings: 1 unique messages, 1 total
+End of script. Logfile hash: 07259ac291, CPU: user 24.65s system 0.54s, MEM: 109.02 MB peak
+Yosys 0.33 (git sha1 2584903a060)
+Time spent: 38% 21x opt_expr (9 sec), 18% 17x opt_clean (4 sec), ...

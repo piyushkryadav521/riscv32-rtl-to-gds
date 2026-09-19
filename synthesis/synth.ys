@@ -1,0 +1,42 @@
+# RV32I processor - yosys synthesis script
+
+# read rtl file
+read_verilog rtl/program_counter.v 
+read_verilog rtl/instruction_memory.v 
+read_verilog rtl/instruction_decoder.v
+read_verilog rtl/register_file.v
+read_verilog rtl/immediate_generator.v
+read_verilog rtl/alu.v
+read_verilog rtl/alu_control.v
+read_verilog rtl/control_unit.v
+read_verilog rtl/data_memory.v
+read_verilog rtl/branch_unit.v
+read_verilog rtl/riscv_cpu.v
+read_verilog rtl/top.v
+
+# elaborate top level design
+hierarchy -top top
+
+# process and optimize rtl
+proc 
+opt 
+
+# convert process and optimize
+fsm 
+opt
+memory 
+opt
+
+# technology independent synthesis
+techmap
+opt
+
+# flatten design 
+flatten
+opt
+
+# write synthesis gate-level netlist
+write_verilog -noattr synthesis/netlist/riscv32_synthesis
+
+#generate statics
+stat 
