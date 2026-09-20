@@ -1,0 +1,62 @@
+# ============================================================
+# RV32I Processor - Day 34 Synthesis Optimization
+# ============================================================
+
+# Read RTL
+read_verilog rtl/program_counter.v
+read_verilog rtl/instruction_memory.v
+read_verilog rtl/instruction_decoder.v
+read_verilog rtl/register_file.v
+read_verilog rtl/immediate_generator.v
+read_verilog rtl/alu.v
+read_verilog rtl/alu_control.v
+read_verilog rtl/control_unit.v
+read_verilog rtl/data_memory.v
+read_verilog rtl/branch_unit.v
+read_verilog rtl/riscv_cpu.v
+read_verilog rtl/top.v
+
+# Set top-level
+hierarchy -top top
+
+# Process RTL
+proc
+
+# Initial optimization
+opt
+
+# FSM optimization
+fsm
+opt
+
+# Memory optimization
+memory
+opt
+
+# Repeated RTL optimization
+opt -full
+
+# Technology mapping
+techmap
+
+# Aggressive technology-independent optimization
+opt -full
+
+# Remove unused logic
+opt_clean
+
+# Final optimization
+opt -full
+
+# Flatten design
+flatten
+
+# Final cleanup
+opt -full
+opt_clean
+
+# Print final statistics
+stat
+
+# Write optimized netlist
+write_verilog -noattr synthesis/day34/riscv32_optimized.v

@@ -1,0 +1,34 @@
+# Day 34 — Synthesis Optimization
+
+## Objective
+
+The objective of Day 34 was to optimize the RV32I processor RTL using Yosys synthesis passes and generate an optimized gate-level netlist.
+
+---
+
+## Optimization Flow
+
+The following optimization stages were applied:
+
+1. RTL elaboration
+2. Process conversion
+3. Initial optimization
+4. FSM optimization
+5. Memory optimization
+6. Full RTL optimization
+7. Technology mapping
+8. Aggressive optimization
+9. Unused logic removal
+10. Final optimization
+11. Design flattening
+12. Final cleanup
+13. Optimized netlist generation
+
+---
+
+## Yosys Script
+
+The optimization script is located at:
+
+```text
+synthesis/synthesis/optimize.ys
