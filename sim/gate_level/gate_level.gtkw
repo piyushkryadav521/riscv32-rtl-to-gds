@@ -1,0 +1,25 @@
+[*]
+[*] GTKWave Analyzer v3.3.116 (w)1999-2023 BSI
+[*] Sun Sep 20 06:51:07 2026
+[*]
+[dumpfile] "/home/piyush/asic_projects/riscv32-rtl-to-gds/sim/gate_level/riscv32_gate_level.vcd"
+[dumpfile_mtime] "Sun Sep 20 06:48:06 2026"
+[dumpfile_size] 118625
+[savefile] "/home/piyush/asic_projects/riscv32-rtl-to-gds/sim/gate_level/gate_level.gtkw"
+[timestart] 0
+[size] 1214 721
+[pos] -51 -51
+*-15.000000 2 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 40
+[signals_width] 227
+[sst_expanded] 0
+[sst_vpaned_height] 199
+@28
+gate_level_tb.clk
+@22
+gate_level_tb.instruction[31:0]
+gate_level_tb.pc[31:0]
+@28
+gate_level_tb.reset
+[pattern_trace] 1
+[pattern_trace] 0
