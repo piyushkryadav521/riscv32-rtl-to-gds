@@ -1,0 +1,74 @@
+
+ /----------------------------------------------------------------------------\
+ |                                                                            |
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |                                                                            |
+ |  Copyright (C) 2012 - 2020  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |                                                                            |
+ |  Permission to use, copy, modify, and/or distribute this software for any  |
+ |  purpose with or without fee is hereby granted, provided that the above    |
+ |  copyright notice and this permission notice appear in all copies.         |
+ |                                                                            |
+ |  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES  |
+ |  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF          |
+ |  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR   |
+ |  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES    |
+ |  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN     |
+ |  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF   |
+ |  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.            |
+ |                                                                            |
+ \----------------------------------------------------------------------------/
+
+ Yosys 0.33 (git sha1 2584903a060)
+
+
+-- Executing script file `synthesis/synthesis_report.ys' --
+
+1. Executing Verilog-2005 frontend: synthesis/netlist/riscv32_cpu_final.v
+Parsing Verilog input from `synthesis/netlist/riscv32_cpu_final.v' to AST representation.
+Generating RTLIL representation for module `\top'.
+Successfully finished Verilog frontend.
+
+2. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1. Analyzing design hierarchy..
+Top module:  \top
+
+2.2. Analyzing design hierarchy..
+Top module:  \top
+Removed 0 unused modules.
+
+3. Printing statistics.
+
+=== top ===
+
+   Number of wires:              21749
+   Number of wire bits:          44040
+   Number of public wires:        1755
+   Number of public wire bits:   23922
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:           8708
+   Number of cells:              11286
+     $and                         1505
+     $mux                         8652
+     $not                          110
+     $or                           790
+     $xor                          229
+
+4. Executing HIERARCHY pass (managing design hierarchy).
+
+4.1. Analyzing design hierarchy..
+Top module:  \top
+
+4.2. Analyzing design hierarchy..
+Top module:  \top
+Removed 0 unused modules.
+
+5. Executing CHECK pass (checking for obvious problems).
+Checking module top...
+Found and reported 0 problems.
+
+End of script. Logfile hash: 619adf6d83, CPU: user 6.58s system 0.60s, MEM: 324.16 MB peak
+Yosys 0.33 (git sha1 2584903a060)
+Time spent: 89% 2x read_verilog (5 sec), 8% 1x check (0 sec), ...

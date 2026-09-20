@@ -1,0 +1,17 @@
+# ============================================================
+# RV32I Processor - Synthesis Analysis Report
+# Day 33
+# ============================================================
+
+read_verilog synthesis/netlist/riscv32_cpu_final.v
+
+hierarchy -top top
+
+# Print complete design statistics
+stat
+
+# Print hierarchy information
+hierarchy -check
+
+# Check for undriven signals and structural problems
+checkde 
