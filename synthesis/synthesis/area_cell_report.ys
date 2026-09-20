@@ -1,0 +1,21 @@
+# ============================================================
+# RV32I Processor - Day 33 Area and Cell Analysis
+# ============================================================
+
+# Read synthesized netlist
+read_verilog synthesis/synthesis/synth.v
+
+# Set top-level design
+hierarchy -top top
+
+# Print complete statistics
+stat
+
+# Print cell usage
+stat -width
+
+# Check design hierarchy
+hierarchy -check
+
+# Check for undriven/unconnected signals
+check

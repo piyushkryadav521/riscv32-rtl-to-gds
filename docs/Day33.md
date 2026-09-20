@@ -1,47 +1,20 @@
-# Day 33 — Synthesis Reports & Design Analysis
+# Day 33 — Synthesis Area and Cell Analysis
 
 ## Objective
 
-Analyze the final synthesized RV32I processor netlist using Yosys and verify its structural consistency.
+Analyze the synthesized RV32I processor to establish a baseline for logic-cell usage, memory usage, and design size before further optimization.
+
+## Tools Used
+
+- Ubuntu 24.04 LTS
+- Yosys 0.33
+- Verilog
+- Python 3
+- Git/GitHub
 
 ## Input Netlist
 
-`synthesis/netlist/riscv32_cpu_final.v`
-
-Netlist size: approximately 1.7 MB.
-
-## Synthesis Analysis Report
-
-`synthesis/reports/day33_synthesis_report.log`
-
-## Structural Statistics
-
-| Metric | Value |
-|---|---:|
-| Wires | 21,749 |
-| Wire bits | 44,040 |
-| Public wires | 1,755 |
-| Public wire bits | 23,922 |
-| Processes | 8,708 |
-| Reported cells | 11,286 |
-
-### Combinational Cell Breakdown
-
-| Cell | Count |
-|---|---:|
-| `$mux` | 8,652 |
-| `$and` | 1,505 |
-| `$or` | 790 |
-| `$xor` | 229 |
-| `$not` | 110 |
-
-## Structural Verification
-
-Yosys hierarchy analysis identified `top` as the top-level module.
-
-The CHECK pass reported:
+The Day 32 synthesized netlist was used as the input:
 
 ```text
-```text
-Found and reported 0 problems.
-```
+synthesis/synthesis/synth.v
