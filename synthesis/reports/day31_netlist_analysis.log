@@ -56,6 +56,6 @@ Removed 0 unused modules.
      $or                           790
      $xor                          229
 
-End of script. Logfile hash: fe6d789577, CPU: user 6.77s system 2.47s, MEM: 322.22 MB peak
+End of script. Logfile hash: fe6d789577, CPU: user 6.48s system 1.87s, MEM: 322.12 MB peak
 Yosys 0.33 (git sha1 2584903a060)
-Time spent: 99% 2x read_verilog (9 sec), 0% 1x hierarchy (0 sec), ...
+Time spent: 99% 2x read_verilog (8 sec), 0% 1x hierarchy (0 sec), ...
