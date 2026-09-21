@@ -1,0 +1,27 @@
+Day 34 - Final Synthesis Optimization Summary
+==============================================
+
+Original Day 30 synthesized cell count : 19990
+Optimized Day 32 synthesized cell count: 15164
+
+Cell reduction:
+19990 - 15164 = 4826 cells
+
+Reduction percentage:
+4826 / 19990 * 100 = approximately 24.1%
+
+Day 34 re-read optimized netlist:
+Explicit combinational cells: 8060
+Processes: 7108
+
+Note:
+The 8060 cells are the explicit combinational cells reported when the
+optimized netlist is re-read by Yosys. The 7108 processes are separate
+structural process representations and should not be added to 8060 as
+a physical cell count.
+
+The technology-independent synthesized-cell comparison remains:
+19990 -> 15164
+
+This project has not yet been mapped to a specific standard-cell library,
+so these numbers are not physical silicon area.
