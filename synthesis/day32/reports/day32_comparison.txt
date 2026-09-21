@@ -1,0 +1,77 @@
+========================================
+SYNTHESIS OPTIMIZATION REPORT
+========================================
+
+Tool:
+Yosys 0.33
+
+----------------------------------------
+CELL COUNT COMPARISON
+----------------------------------------
+
+Day 30 Baseline:
+Total Cells = 19,990
+
+Day 32 Optimized:
+Total Cells = 15,164
+
+Cell Reduction:
+19,990 - 15,164 = 4,826 cells
+
+Approximate Reduction:
+24.1%
+
+----------------------------------------
+CELL BREAKDOWN
+----------------------------------------
+
+Cell Type       Day 30      Day 32
+----------------------------------------
+AND             1505        524
+MUX             8652        6846
+OR               790        449
+XOR              229        119
+NOT              110        122
+DFFE            8192       6848
+DFFE+Reset       482        226
+DFF+Reset         30         30
+----------------------------------------
+Total          19990      15164
+
+----------------------------------------
+NETLIST
+----------------------------------------
+
+Optimized Netlist:
+synthesis/day32/netlist/riscv32_optimized.v
+
+Netlist Size:
+Approximately 1.8 MB
+
+----------------------------------------
+FUNCTIONAL CHECK
+----------------------------------------
+
+The optimized gate-level netlist successfully:
+
+1. Compiled using Icarus Verilog.
+2. Elaborated successfully.
+3. Simulated successfully.
+4. Produced valid PC and instruction outputs.
+
+----------------------------------------
+CONCLUSION
+----------------------------------------
+
+Yosys optimization with ABC successfully reduced
+the reported technology-independent cell count from
+19,990 to 15,164.
+
+The optimized netlist was successfully generated
+and simulated.
+
+Further timing, area, and physical implementation
+analysis will be performed using standard-cell
+libraries during the STA and physical-design phases.
+
+========================================
