@@ -1,0 +1,69 @@
+# ============================================================
+# RV32I Processor - Nangate45 Technology Mapping
+# Static Timing Analysis Preparation
+# ============================================================
+
+# ------------------------------------------------------------
+# Read RTL
+# ------------------------------------------------------------
+
+read_verilog rtl/program_counter.v
+read_verilog rtl/instruction_memory.v
+read_verilog rtl/instruction_decoder.v
+read_verilog rtl/register_file.v
+read_verilog rtl/immediate_generator.v
+read_verilog rtl/alu.v
+read_verilog rtl/alu_control.v
+read_verilog rtl/control_unit.v
+read_verilog rtl/data_memory.v
+read_verilog rtl/branch_unit.v
+read_verilog rtl/riscv_cpu.v
+read_verilog rtl/top.v
+
+# ------------------------------------------------------------
+# Read Nangate45 cell models
+# ------------------------------------------------------------
+
+read_verilog ~/OpenROAD/test/Nangate45/work_around_yosys/cells.v
+
+# ------------------------------------------------------------
+# Set top module
+# ------------------------------------------------------------
+
+hierarchy -top top
+
+# ------------------------------------------------------------
+# Convert processes and optimize
+# ------------------------------------------------------------
+
+proc
+opt
+fsm
+opt
+memory
+opt
+
+# ------------------------------------------------------------
+# Technology mapping
+# ------------------------------------------------------------
+
+techmap
+opt
+
+dfflibmap -liberty ~/OpenROAD/test/Nangate45/Nangate45_typ.lib
+
+abc -liberty ~/OpenROAD/test/Nangate45/Nangate45_typ.lib
+
+opt_clean
+
+# ------------------------------------------------------------
+# Final statistics
+# ------------------------------------------------------------
+
+stat
+
+# ------------------------------------------------------------
+# Write mapped netlist
+# ------------------------------------------------------------
+
+write_verilog -noattr sta/netlist/riscv32_nangate45.v
