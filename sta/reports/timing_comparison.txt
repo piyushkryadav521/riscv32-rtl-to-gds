@@ -1,0 +1,49 @@
+============================================================
+RV32I Processor - Static Timing Analysis Comparison
+============================================================
+
+Technology:
+Nangate45
+
+------------------------------------------------------------
+100 MHz Analysis
+------------------------------------------------------------
+
+Clock Period       : 10.00 ns
+Frequency          : 100 MHz
+Data Arrival       : 46.64 ns
+Data Required      : 9.86 ns
+Worst Setup Slack  : -36.78 ns (VIOLATED)
+Worst Hold Slack   : +0.01 ns (MET)
+Setup TNS          : -300882.06 ns
+
+------------------------------------------------------------
+50 MHz Analysis
+------------------------------------------------------------
+
+Clock Period       : 20.00 ns
+Frequency          : 50 MHz
+Data Arrival       : 46.64 ns
+Data Required      : 19.86 ns
+Worst Setup Slack  : -26.78 ns (VIOLATED)
+Worst Hold Slack   : +0.01 ns (MET)
+Setup TNS          : -214162.08 ns
+
+------------------------------------------------------------
+Timing Observation
+------------------------------------------------------------
+
+The synthesized logic and technology library remain unchanged,
+therefore the data arrival time remains 46.64 ns.
+
+Increasing the clock period from 10 ns to 20 ns increases the
+available setup timing budget.
+
+Worst setup slack improves from -36.78 ns to -26.78 ns.
+
+Hold slack remains +0.01 ns and continues to meet timing.
+
+The current implementation still requires timing optimization
+to achieve the 50 MHz target without setup violations.
+
+============================================================
