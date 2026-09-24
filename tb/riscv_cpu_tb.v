@@ -48,13 +48,13 @@ module riscv_cpu_tb;
         $display("x7  = %0d  (Expected 77)",
                  dut.registers.registers[7]);
 
-        $display("x8  = %0d  (Expected 55)",
+        $display("x8  = %0d  (Expected 20)",
                  dut.registers.registers[8]);
 
-        $display("x9  = %0d  (Expected 32)",
+        $display("x9  = %0d  (Expected 55)",
                  dut.registers.registers[9]);
 
-        $display("x10 = %0d  (Expected 88)",
+        $display("x10 = %0d  (Expected 25)",
                  dut.registers.registers[10]);
 
         $display("========================================");
