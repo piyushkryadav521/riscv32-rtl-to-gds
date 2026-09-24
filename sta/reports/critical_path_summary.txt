@@ -1,0 +1,104 @@
+============================================================
+RV32I Processor - Critical Path Analysis
+============================================================
+
+Technology:
+Nangate45
+
+Analysis:
+Static Timing Analysis using OpenSTA
+
+Clock:
+50 MHz
+Clock Period: 20.00 ns
+
+------------------------------------------------------------
+Worst Setup Path
+------------------------------------------------------------
+
+Startpoint:
+cpu/pc_unit/_099_
+
+Endpoint:
+cpu/dmem/_41644_
+
+Path Type:
+max
+
+Data Arrival Time:
+46.64 ns
+
+Data Required Time:
+19.86 ns
+
+Worst Setup Slack:
+-26.78 ns (VIOLATED)
+
+------------------------------------------------------------
+Critical Datapath
+------------------------------------------------------------
+
+PC Register
+    ->
+Instruction Memory
+    ->
+Register File
+    ->
+MUX
+    ->
+ALU
+    ->
+Data Memory
+    ->
+Destination Register
+
+------------------------------------------------------------
+Major Delay Contributions
+------------------------------------------------------------
+
+ALU critical logic:
+approximately 39.93 ns
+
+Data-memory logic:
+approximately 4.20 ns
+
+Remaining datapath logic:
+approximately 2.51 ns
+
+Total data arrival:
+46.64 ns
+
+------------------------------------------------------------
+Critical Observation
+------------------------------------------------------------
+
+The ALU-related combinational logic dominates the critical
+path delay.
+
+The approximately 39.93 ns delay associated with the critical
+ALU logic is significantly larger than the surrounding logic.
+
+The data-memory logic contributes an additional approximately
+4.20 ns.
+
+Therefore, timing optimization should first investigate the
+ALU/datapath implementation and its synthesized logic depth.
+
+------------------------------------------------------------
+Timing Requirement
+------------------------------------------------------------
+
+At 50 MHz:
+
+Clock period      = 20.00 ns
+Required time     = 19.86 ns
+Arrival time      = 46.64 ns
+Setup slack       = -26.78 ns
+
+The design currently fails setup timing.
+
+Hold timing remains satisfied with:
+
+Worst hold slack = +0.01 ns
+
+============================================================
