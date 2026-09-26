@@ -1,0 +1,31 @@
+[WARNING STA-0168] unknown field nets.
+Startpoint: cpu/dmem/_42412_ (rising edge-triggered flip-flop clocked by clk)
+Endpoint: cpu/dmem/_42412_ (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: min
+
+Fanout      Cap     Slew    Delay     Time   Description
+---------------------------------------------------------------------------------
+                   0.000    0.000    0.000   clock clk (rise edge)
+                            0.000    0.000   clock network delay (ideal)
+                   0.000    0.000    0.000 ^ cpu/dmem/_42412_/CK (DFF_X1)
+     2    1.890    0.009    0.086    0.086 ^ cpu/dmem/_42412_/Q (DFF_X1)
+                   0.009    0.000    0.086 ^ cpu/dmem/_25791_/B (MUX2_X1)
+     1    1.140    0.008    0.033    0.119 ^ cpu/dmem/_25791_/Z (MUX2_X1)
+                   0.008    0.000    0.119 ^ cpu/dmem/_42412_/D (DFF_X1)
+                                     0.119   data arrival time
+
+                   0.000    0.000    0.000   clock clk (rise edge)
+                            0.000    0.000   clock network delay (ideal)
+                            0.100    0.100   clock uncertainty
+                            0.000    0.100   clock reconvergence pessimism
+                                     0.100 ^ cpu/dmem/_42412_/CK (DFF_X1)
+                            0.005    0.105   library hold time
+                                     0.105   data required time
+---------------------------------------------------------------------------------
+                                     0.105   data required time
+                                    -0.119   data arrival time
+---------------------------------------------------------------------------------
+                                     0.014   slack (MET)
+
+

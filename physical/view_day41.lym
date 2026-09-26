@@ -1,0 +1,30 @@
+#RV32I CTS Layout Viewer
+
+app = RBA::Application.instance
+mw = app.main_window
+
+# Create layout
+ly = RBA::Layout.new
+
+# Configure LEF/DEF reader
+opt = RBA::LoadLayoutOptions.new
+
+opt.lefdef_config.lef_files = [
+  File.expand_path("~/OpenROAD/test/Nangate45/Nangate45_tech.lef"),
+  File.expand_path("~/OpenROAD/test/Nangate45/Nangate45.lef")
+]
+
+# Read the placed + CTS optimized DEF
+ly.read(
+  File.expand_path("~/asic_projects/riscv32-rtl-to-gds/physical/rv32i_cts_opt.def"),
+  opt
+)
+
+# Create a view
+cv = mw.create_layout(ly)
+
+# Show top cell
+mw.current_view.select_cell(ly.top_cell.cell_index)
+
+# Fit complete design
+mw.current_view.zoom_fit
