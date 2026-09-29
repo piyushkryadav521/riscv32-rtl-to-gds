@@ -1,0 +1,248 @@
+OpenROAD 26Q3-1193-gec94b92b31 
+Features included (+) or not (-): +GPU +GUI +Python
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+[INFO ODB-0227] LEF file: /home/piyush/OpenROAD/test/Nangate45/Nangate45_tech.lef, created 22 layers, 27 vias
+[WARNING ODB-0217] duplicate VIARULE (Via1Array-0) ignoring...
+[WARNING ODB-0217] duplicate VIARULE (Via1Array-1) ignoring...
+[WARNING ODB-0217] duplicate VIARULE (Via1Array-2) ignoring...
+[WARNING ODB-0217] duplicate VIARULE (Via1Array-3) ignoring...
+[WARNING ODB-0217] duplicate VIARULE (Via1Array-4) ignoring...
+[WARNING ODB-0217] duplicate VIARULE (Via2Array-0) ignoring...
+[WARNING ODB-0217] duplicate VIARULE (Via2Array-1) ignoring...
+[WARNING ODB-0217] duplicate VIARULE (Via2Array-2) ignoring...
+[WARNING ODB-0217] duplicate VIARULE (Via2Array-3) ignoring...
+[WARNING ODB-0217] duplicate VIARULE (Via2Array-4) ignoring...
+[WARNING ODB-0217] duplicate VIARULE (Via3Array-0) ignoring...
+[WARNING ODB-0217] duplicate VIARULE (Via3Array-1) ignoring...
+[WARNING ODB-0217] duplicate VIARULE (Via3Array-2) ignoring...
+[WARNING ODB-0217] duplicate VIARULE (Via4Array-0) ignoring...
+[WARNING ODB-0217] duplicate VIARULE (Via5Array-0) ignoring...
+[WARNING ODB-0217] duplicate VIARULE (Via6Array-0) ignoring...
+[WARNING ODB-0217] duplicate VIARULE (Via7Array-0) ignoring...
+[WARNING ODB-0217] duplicate VIARULE (Via8Array-0) ignoring...
+[WARNING ODB-0217] duplicate VIARULE (Via9Array-0) ignoring...
+[INFO ODB-0394] Duplicate site FreePDK45_38x28_10R_NP_162NW_34O in Nangate45 already seen in Nangate45_tech
+[INFO ODB-0227] LEF file: /home/piyush/OpenROAD/test/Nangate45/Nangate45.lef, created 135 library cells
+[INFO ODB-0127] Reading DEF file: physical/rv32i_tracks_clean.def
+[INFO ODB-0128] Design: top
+[INFO ODB-0130]     Created 66 pins.
+[INFO ODB-0131]     Created 33309 components and 193877 component-terminals.
+[INFO ODB-0133]     Created 41734 nets and 126463 connections.
+[INFO ODB-0134] Finished DEF file: physical/rv32i_tracks_clean.def
+[INFO DRT-0149] Reading tech and libs.
+
+Units:                2000
+Number of layers:     21
+Number of macros:     135
+Number of vias:       27
+Number of viarulegen: 19
+
+[INFO DRT-0150] Reading design.
+[WARNING DRT-0120] Large net instruction[11] has 111 pins which may impact routing performance. Consider optimization.
+[WARNING DRT-0120] Large net cpu/dmem/net1018 has 117 pins which may impact routing performance. Consider optimization.
+[WARNING DRT-0120] Large net cpu/dmem/net1044 has 126 pins which may impact routing performance. Consider optimization.
+[WARNING DRT-0120] Large net cpu/dmem/net1046 has 127 pins which may impact routing performance. Consider optimization.
+[WARNING DRT-0120] Large net cpu/dmem/net1066 has 136 pins which may impact routing performance. Consider optimization.
+[WARNING DRT-0120] Large net cpu/dmem/net916 has 174 pins which may impact routing performance. Consider optimization.
+[WARNING DRT-0120] Large net cpu/dmem/net922 has 174 pins which may impact routing performance. Consider optimization.
+[WARNING DRT-0120] Large net cpu/dmem/net923 has 139 pins which may impact routing performance. Consider optimization.
+[WARNING DRT-0120] Large net cpu/dmem/net926 has 170 pins which may impact routing performance. Consider optimization.
+[WARNING DRT-0120] Large net cpu/dmem/net930 has 180 pins which may impact routing performance. Consider optimization.
+[WARNING DRT-0120] Large net cpu/dmem/net936 has 178 pins which may impact routing performance. Consider optimization.
+[WARNING DRT-0120] Large net cpu/dmem/net938 has 167 pins which may impact routing performance. Consider optimization.
+[WARNING DRT-0120] Large net cpu/dmem/net950 has 181 pins which may impact routing performance. Consider optimization.
+[WARNING DRT-0120] Large net cpu/dmem/net952 has 187 pins which may impact routing performance. Consider optimization.
+[WARNING DRT-0120] Large net cpu/dmem/net953 has 180 pins which may impact routing performance. Consider optimization.
+[WARNING DRT-0120] Large net cpu/dmem/net956 has 174 pins which may impact routing performance. Consider optimization.
+[WARNING DRT-0120] Large net cpu/dmem/net957 has 182 pins which may impact routing performance. Consider optimization.
+[WARNING DRT-0120] Large net cpu/dmem/net962 has 177 pins which may impact routing performance. Consider optimization.
+[WARNING DRT-0120] Large net cpu/dmem/net963 has 348 pins which may impact routing performance. Consider optimization.
+[WARNING DRT-0120] Large net cpu/dmem/net966 has 179 pins which may impact routing performance. Consider optimization.
+[WARNING DRT-0120] Large net cpu/dmem/net967 has 182 pins which may impact routing performance. Consider optimization.
+[WARNING DRT-0120] Large net cpu/dmem/net968 has 185 pins which may impact routing performance. Consider optimization.
+[WARNING DRT-0120] Large net cpu/dmem/net969 has 171 pins which may impact routing performance. Consider optimization.
+[WARNING DRT-0120] Large net cpu/dmem/net971 has 174 pins which may impact routing performance. Consider optimization.
+[WARNING DRT-0120] Large net cpu/dmem/net972 has 181 pins which may impact routing performance. Consider optimization.
+[WARNING DRT-0120] Large net cpu/dmem/net973 has 177 pins which may impact routing performance. Consider optimization.
+[WARNING DRT-0120] Large net cpu/dmem/net974 has 191 pins which may impact routing performance. Consider optimization.
+[WARNING DRT-0120] Large net cpu/dmem/net975 has 179 pins which may impact routing performance. Consider optimization.
+[WARNING DRT-0120] Large net cpu/dmem/net994 has 119 pins which may impact routing performance. Consider optimization.
+[WARNING DRT-0120] Large net cpu/registers/net622 has 167 pins which may impact routing performance. Consider optimization.
+[WARNING DRT-0120] Large net net4 has 182 pins which may impact routing performance. Consider optimization.
+[WARNING DRT-0120] Large net net5 has 199 pins which may impact routing performance. Consider optimization.
+[WARNING DRT-0120] Large net net6 has 205 pins which may impact routing performance. Consider optimization.
+[WARNING DRT-0120] Large net net7 has 192 pins which may impact routing performance. Consider optimization.
+
+Design:                   top
+Die area:                 ( 0 0 ) ( 766610 766610 )
+Number of track patterns: 24
+Number of DEF vias:       0
+Number of components:     33309
+Number of terminals:      66
+Number of snets:          0
+Number of nets:           41734
+
+[INFO DRT-0167] List of default vias:
+  Layer via2
+    default via: via2_5
+  Layer via3
+    default via: via3_2
+  Layer via4
+    default via: via4_0
+  Layer via5
+    default via: via5_0
+  Layer via6
+    default via: via6_0
+  Layer via7
+    default via: via7_0
+  Layer via8
+    default via: via8_0
+  Layer via9
+    default via: via9_0
+[INFO DRT-0162] Library cell analysis.
+[INFO DRT-0163] Instance analysis.
+[INFO DRT-0164] Number of unique instances = 1492.
+[INFO DRT-0168] Init region query.
+[INFO DRT-0024]   Complete active.
+[INFO DRT-0024]   Complete Fr_VIA.
+[INFO DRT-0024]   Complete metal1.
+[INFO DRT-0024]   Complete via1.
+[INFO DRT-0024]   Complete metal2.
+[INFO DRT-0024]   Complete via2.
+[INFO DRT-0024]   Complete metal3.
+[INFO DRT-0024]   Complete via3.
+[INFO DRT-0024]   Complete metal4.
+[INFO DRT-0024]   Complete via4.
+[INFO DRT-0024]   Complete metal5.
+[INFO DRT-0024]   Complete via5.
+[INFO DRT-0024]   Complete metal6.
+[INFO DRT-0024]   Complete via6.
+[INFO DRT-0024]   Complete metal7.
+[INFO DRT-0024]   Complete via7.
+[INFO DRT-0024]   Complete metal8.
+[INFO DRT-0024]   Complete via8.
+[INFO DRT-0024]   Complete metal9.
+[INFO DRT-0024]   Complete via9.
+[INFO DRT-0024]   Complete metal10.
+[INFO DRT-0033] active shape region query size = 0.
+[INFO DRT-0033] FR_VIA shape region query size = 0.
+[INFO DRT-0033] metal1 shape region query size = 905206.
+[INFO DRT-0033] via1 shape region query size = 0.
+[INFO DRT-0033] metal2 shape region query size = 66.
+[INFO DRT-0033] via2 shape region query size = 0.
+[INFO DRT-0033] metal3 shape region query size = 0.
+[INFO DRT-0033] via3 shape region query size = 0.
+[INFO DRT-0033] metal4 shape region query size = 0.
+[INFO DRT-0033] via4 shape region query size = 0.
+[INFO DRT-0033] metal5 shape region query size = 0.
+[INFO DRT-0033] via5 shape region query size = 0.
+[INFO DRT-0033] metal6 shape region query size = 0.
+[INFO DRT-0033] via6 shape region query size = 0.
+[INFO DRT-0033] metal7 shape region query size = 0.
+[INFO DRT-0033] via7 shape region query size = 0.
+[INFO DRT-0033] metal8 shape region query size = 0.
+[INFO DRT-0033] via8 shape region query size = 0.
+[INFO DRT-0033] metal9 shape region query size = 0.
+[INFO DRT-0033] via9 shape region query size = 0.
+[INFO DRT-0033] metal10 shape region query size = 0.
+[INFO DRT-0165] Start pin access.
+[INFO DRT-0076]   Complete 1000 pins.
+[INFO DRT-0076]   Complete 2000 pins.
+[INFO DRT-0076]   Complete 3000 pins.
+[INFO DRT-0076]   Complete 4000 pins.
+[INFO DRT-0076]   Complete 5000 pins.
+[INFO DRT-0076]   Complete 6000 pins.
+[INFO DRT-0076]   Complete 7000 pins.
+[INFO DRT-0076]   Complete 8000 pins.
+[INFO DRT-0078]   Complete 8182 pins.
+[INFO DRT-0079]   Complete 100 unique inst patterns.
+[INFO DRT-0079]   Complete 200 unique inst patterns.
+[INFO DRT-0079]   Complete 300 unique inst patterns.
+[INFO DRT-0079]   Complete 400 unique inst patterns.
+[INFO DRT-0079]   Complete 500 unique inst patterns.
+[INFO DRT-0079]   Complete 600 unique inst patterns.
+[INFO DRT-0079]   Complete 700 unique inst patterns.
+[INFO DRT-0079]   Complete 800 unique inst patterns.
+[INFO DRT-0079]   Complete 900 unique inst patterns.
+[INFO DRT-0079]   Complete 1000 unique inst patterns.
+[INFO DRT-0081]   Complete 1492 unique inst patterns.
+[INFO DRT-0082]   Complete 10000 groups.
+[INFO DRT-0082]   Complete 20000 groups.
+[INFO DRT-0084]   Complete 23918 groups.
+#scanned instances     = 33309
+#unique  instances     = 1492
+#stdCellGenAp          = 47553
+#stdCellValidPlanarAp  = 0
+#stdCellValidViaAp     = 35005
+#stdCellPinNoAp        = 0
+#stdCellPinCnt         = 126463
+#instTermValidViaApCnt = 0
+#macroGenAp            = 0
+#macroValidPlanarAp    = 0
+#macroValidViaAp       = 0
+#macroNoAp             = 0
+[INFO DRT-0166] Complete pin access.
+[INFO DRT-0267] cpu time = 00:21:36, elapsed time = 00:22:22, memory = 273.25 (MB), peak = 287.10 (MB)
+[INFO GRT-0020] Min routing layer: metal2
+[INFO GRT-0021] Max routing layer: metal10
+[INFO GRT-0022] Global adjustment: 0%
+[INFO GRT-0023] Grid origin: (0, 0)
+[INFO GRT-0088] Layer metal1  Track-Pitch = 0.1400  line-2-Via Pitch: 0.1350
+[INFO GRT-0088] Layer metal2  Track-Pitch = 0.1160  line-2-Via Pitch: 0.1400
+[INFO GRT-0088] Layer metal3  Track-Pitch = 0.1400  line-2-Via Pitch: 0.1400
+[INFO GRT-0088] Layer metal4  Track-Pitch = 0.2800  line-2-Via Pitch: 0.2800
+[INFO GRT-0088] Layer metal5  Track-Pitch = 0.2800  line-2-Via Pitch: 0.2800
+[INFO GRT-0088] Layer metal6  Track-Pitch = 0.2800  line-2-Via Pitch: 0.2800
+[INFO GRT-0088] Layer metal7  Track-Pitch = 0.8000  line-2-Via Pitch: 0.8000
+[INFO GRT-0088] Layer metal8  Track-Pitch = 0.8000  line-2-Via Pitch: 0.8000
+[INFO GRT-0088] Layer metal9  Track-Pitch = 1.6000  line-2-Via Pitch: 1.6000
+[INFO GRT-0088] Layer metal10 Track-Pitch = 1.6000  line-2-Via Pitch: 1.6000
+[INFO GRT-0003] Macros: 0
+[INFO GRT-0004] Blockages: 0
+[INFO GRT-0019] Found 1126 clock nets.
+[INFO GRT-0001] Minimum degree: 2
+[INFO GRT-0002] Maximum degree: 348
+
+[INFO GRT-0053] Routing resources analysis:
+          Routing      Original      Derated      Resource
+Layer     Direction    Resources     Resources    Reduction (%)
+---------------------------------------------------------------
+metal1     Horizontal          0             0          0.00%
+metal2     Vertical       598024        598024          0.00%
+metal3     Horizontal     495578        495578          0.00%
+metal4     Vertical       247789        247789          0.00%
+metal5     Horizontal     247789        247789          0.00%
+metal6     Vertical       247789        247789          0.00%
+metal7     Horizontal      86518         86518          0.00%
+metal8     Vertical        86518         86518          0.00%
+metal9     Horizontal      43259         43259          0.00%
+metal10    Vertical        43259         43259          0.00%
+---------------------------------------------------------------
+
+[INFO GRT-0197] Via related to pin nodes: 216837
+[INFO GRT-0198] Via related Steiner nodes: 5627
+[INFO GRT-0199] Via filling finished.
+[INFO GRT-0111] Final number of vias: 270097
+[INFO GRT-0112] Final usage 3D: 1064654
+
+[INFO GRT-0096] Final congestion report:
+Layer         Resource        Demand        Usage (%)    Max H / Max V / Total Congestion
+---------------------------------------------------------------------------------------
+metal1               0             0            0.00%             0 /  0 /  0
+metal2          598024        139860           23.39%             0 /  0 /  0
+metal3          495578        113525           22.91%             0 /  0 /  0
+metal4          247789           681            0.27%             0 /  0 /  0
+metal5          247789           297            0.12%             0 /  0 /  0
+metal6          247789             0            0.00%             0 /  0 /  0
+metal7           86518             0            0.00%             0 /  0 /  0
+metal8           86518             0            0.00%             0 /  0 /  0
+metal9           43259             0            0.00%             0 /  0 /  0
+metal10          43259             0            0.00%             0 /  0 /  0
+---------------------------------------------------------------------------------------
+Total          2096523        254363           12.13%             0 /  0 /  0
+
+[INFO GRT-0018] Total wirelength: 749242 um
+[INFO GRT-0014] Routed nets: 32517
+[INFO GRT-0303] Global routing runtime = 00:00:11
+Design area 82458 um^2 63% utilization.

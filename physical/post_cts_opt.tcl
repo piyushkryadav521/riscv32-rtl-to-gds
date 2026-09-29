@@ -10,7 +10,7 @@ read_lef ~/OpenROAD/test/Nangate45/Nangate45.lef
 read_liberty ~/OpenROAD/test/Nangate45/Nangate45_typ.lib
 
 # Load post-CTS design
-read_def physical/rv32i_cts.def
+read_def physical/rv32i_cts_legal.def
 
 # Timing constraints
 read_sdc sta/constraints_50MHz.sdc

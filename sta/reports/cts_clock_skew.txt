@@ -1,0 +1,8 @@
+Clock clk
+   0.65 source latency cpu/dmem/_48811_/CK ^
+  -0.07 target latency cpu/registers/_9263_/CK ^
+   0.10 clock uncertainty
+   0.00 CRPR
+--------------
+   0.68 setup skew
+
