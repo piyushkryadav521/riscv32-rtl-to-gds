@@ -85,3 +85,7 @@ Final routing statistics:
 The project demonstrates a complete RTL-to-GDSII implementation flow for a 32-bit RV32I processor using the Nangate45 technology library.
 
 The design successfully progresses through physical implementation and GDSII generation. The primary remaining optimization target is setup timing closure, particularly the ALU/datapath critical path.
+
+## Author
+#### PIYUSH KUMAR YADAV
+(ASIC Design Engineer)
