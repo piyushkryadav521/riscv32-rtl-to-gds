@@ -1,0 +1,10 @@
+[lefdef]
+lef_files=/home/piyush/OpenROAD/test/Nangate45/Nangate45_tech.lef;/home/piyush/OpenROAD/test/Nangate45/Nangate45.lef
+dbu=0.001
+produce_routing=true
+produce_via_geometry=true
+produce_pins=true
+produce_lef_pins=true
+produce_obstructions=true
+produce_special_routing=true
+produce_cell_outlines=true
